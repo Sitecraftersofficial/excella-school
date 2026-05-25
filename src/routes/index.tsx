@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { motion, useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import {
@@ -12,19 +12,6 @@ import classroomImg from "@/assets/excella-classroom.jpeg";
 import trophiesImg from "@/assets/excella-trophies.jpeg";
 import awardsImg from "@/assets/excella-awards.jpeg";
 import debateImg from "@/assets/excella-debate.jpeg";
-
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Excella School — Where Excellence Meets Opportunity" },
-      { name: "description", content: "Premium American Montessori education, SAT preparation, and Rwandan National Curriculum in Kigali. One school. Multiple pathways to success." },
-      { property: "og:title", content: "Excella School — Where Excellence Meets Opportunity" },
-      { property: "og:description", content: "One premium school. Multiple pathways. Future-ready students in the heart of Kigali." },
-    ],
-    links: [{ rel: "canonical", href: "/" }],
-  }),
-  component: Home,
-});
 
 function Counter({ end, suffix = "" }: { end: number; suffix?: string }) {
   const [val, setVal] = useState(0);
@@ -50,7 +37,7 @@ function Counter({ end, suffix = "" }: { end: number; suffix?: string }) {
   return <span ref={ref}>{val}{suffix}</span>;
 }
 
-function Home() {
+export function Home() {
   const reduce = useReducedMotion();
   return (
     <>
@@ -62,7 +49,7 @@ function Home() {
         >
           <source src="/videos/excella-hero.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/70 to-ink/40" />
+        <div className="absolute inset-0 bg-linear-to-t from-ink via-ink/70 to-ink/40" />
         <div className="absolute inset-0 gradient-radial opacity-60" />
         <div className="relative container-px mx-auto max-w-7xl pb-20 pt-40 md:pb-28 md:pt-44 w-full">
           <motion.div
@@ -175,7 +162,7 @@ function Home() {
               { icon: BookOpen, badge: "National", t: "Rwandan Curriculum", d: "Rwanda's national standards delivered with the same premium care and excellence." },
             ].map((p, i) => (
               <Reveal key={i} delay={i * 0.1}>
-                <div className="group relative h-full overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] p-8 hover:bg-white/[0.06] transition-colors">
+                <div className="group relative h-full overflow-hidden rounded-3xl border border-white/10 bg-white/3 p-8 hover:bg-white/6 transition-colors">
                   <div className="absolute -top-16 -right-16 h-48 w-48 rounded-full bg-primary/20 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
                   <div className="relative">
                     <span className="text-[10px] uppercase tracking-[0.25em] text-primary font-semibold">{p.badge}</span>
@@ -219,12 +206,12 @@ function Home() {
         <Reveal className="lg:col-span-6 order-1 lg:order-2" delay={0.15}>
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-4">
-              <img src={scienceImg} alt="Student in science lab" className="rounded-2xl aspect-[3/4] object-cover w-full shadow-elegant" />
+              <img src={scienceImg} alt="Student in science lab" className="rounded-2xl aspect-3/4 object-cover w-full shadow-elegant" />
               <img src={classroomImg} alt="Excella classroom" className="rounded-2xl aspect-square object-cover w-full" />
             </div>
             <div className="space-y-4 pt-10">
               <img src={debateImg} alt="Student leadership" className="rounded-2xl aspect-square object-cover w-full" />
-              <div className="rounded-2xl bg-ink text-ink-foreground p-6 aspect-[3/4] flex flex-col justify-between">
+              <div className="rounded-2xl bg-ink text-ink-foreground p-6 aspect-3/4 flex flex-col justify-between">
                 <Laptop className="h-7 w-7 text-primary" />
                 <div>
                   <p className="text-3xl font-display">1:1</p>
@@ -253,9 +240,9 @@ function Home() {
         </div>
         <div className="grid md:grid-cols-6 gap-4">
           <Reveal className="md:col-span-4">
-            <div className="group relative overflow-hidden rounded-3xl aspect-[16/10]">
+            <div className="group relative overflow-hidden rounded-3xl aspect-16/10">
               <img src={trophiesImg} alt="Trophies and competitions" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-ink via-ink/40 to-transparent" />
               <div className="absolute bottom-0 p-8 text-ink-foreground">
                 <Trophy className="h-6 w-6 text-primary" />
                 <h3 className="mt-2 text-2xl md:text-3xl">Champions on every stage</h3>
@@ -264,9 +251,9 @@ function Home() {
             </div>
           </Reveal>
           <Reveal className="md:col-span-2" delay={0.1}>
-            <div className="group relative overflow-hidden rounded-3xl aspect-[16/10] md:aspect-auto md:h-full">
+            <div className="group relative overflow-hidden rounded-3xl aspect-16/10 md:aspect-auto md:h-full">
               <img src={awardsImg} alt="Award ceremony" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-ink via-ink/40 to-transparent" />
               <div className="absolute bottom-0 p-6 text-ink-foreground">
                 <h3 className="text-xl">Recognition</h3>
                 <p className="text-sm text-ink-foreground/80">A culture of celebration.</p>
@@ -276,16 +263,16 @@ function Home() {
           <Reveal className="md:col-span-2" delay={0.15}>
             <div className="group relative overflow-hidden rounded-3xl aspect-square">
               <img src={classroomImg} alt="Classroom" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink/90 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-ink/90 to-transparent" />
               <div className="absolute bottom-0 p-6 text-ink-foreground">
                 <h3 className="text-xl">House Spirit</h3>
               </div>
             </div>
           </Reveal>
           <Reveal className="md:col-span-4" delay={0.2}>
-            <div className="group relative overflow-hidden rounded-3xl aspect-square md:aspect-[2/1]">
+            <div className="group relative overflow-hidden rounded-3xl aspect-square md:aspect-2/1">
               <img src={debateImg} alt="Debate" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/30 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-ink via-ink/30 to-transparent" />
               <div className="absolute bottom-0 p-8 text-ink-foreground">
                 <h3 className="text-2xl">Voices that lead</h3>
                 <p className="text-sm text-ink-foreground/80 mt-1">Debate, MUN, public speaking and student-led initiatives.</p>
@@ -329,8 +316,8 @@ function Home() {
       <section className="container-px mx-auto max-w-7xl py-24 md:py-32 grid lg:grid-cols-12 gap-12 items-center">
         <Reveal className="lg:col-span-5">
           <div className="relative">
-            <img src={awardsImg} alt="School leadership" className="rounded-3xl aspect-[4/5] object-cover w-full shadow-elegant" />
-            <div className="absolute -bottom-6 -right-6 bg-primary text-primary-foreground p-6 rounded-2xl max-w-[200px] shadow-glow hidden md:block">
+            <img src={awardsImg} alt="School leadership" className="rounded-3xl aspect-4/5 object-cover w-full shadow-elegant" />
+            <div className="absolute -bottom-6 -right-6 bg-primary text-primary-foreground p-6 rounded-2xl max-w-50 shadow-glow hidden md:block">
               <Quote className="h-5 w-5" />
               <p className="mt-2 text-sm font-semibold leading-snug">Every child has the right to soar.</p>
             </div>
@@ -357,9 +344,9 @@ function Home() {
       {/* CAMPUS */}
       <section className="container-px mx-auto max-w-7xl pb-24">
         <Reveal>
-          <div className="relative overflow-hidden rounded-3xl aspect-[21/9]">
+          <div className="relative overflow-hidden rounded-3xl aspect-21/9">
             <img src={campusImg} alt="Excella campus" className="h-full w-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/20 to-transparent" />
+            <div className="absolute inset-0 bg-linear-to-t from-ink/80 via-ink/20 to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-8 md:p-14 text-ink-foreground">
               <p className="text-xs uppercase tracking-[0.25em] text-primary font-semibold">Campus experience</p>
               <h2 className="mt-3 text-3xl md:text-5xl font-display max-w-2xl">A campus designed for inspiration.</h2>
@@ -390,7 +377,7 @@ function Home() {
           ].map((n, i) => (
             <Reveal key={i} delay={i * 0.08}>
               <article className="group rounded-3xl overflow-hidden border border-border bg-card hover:shadow-elegant transition-shadow">
-                <div className="aspect-[16/10] overflow-hidden">
+                <div className="aspect-16/10 overflow-hidden">
                   <img src={n.img} alt={n.t} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
                 </div>
                 <div className="p-6">

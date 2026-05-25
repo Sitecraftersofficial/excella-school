@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
 import { Calendar, ArrowRight } from "lucide-react";
@@ -9,19 +9,6 @@ import awards from "@/assets/excella-awards.jpeg";
 import trophies from "@/assets/excella-trophies.jpeg";
 import classroom from "@/assets/excella-classroom.jpeg";
 
-export const Route = createFileRoute("/news")({
-  head: () => ({
-    meta: [
-      { title: "News & Events — Excella School" },
-      { name: "description", content: "Latest announcements, achievements and upcoming events from Excella School in Kigali, Rwanda." },
-      { property: "og:title", content: "News & Events at Excella" },
-      { property: "og:description", content: "Achievements, events and parent updates from the Excella community." },
-    ],
-    links: [{ rel: "canonical", href: "/news" }],
-  }),
-  component: News,
-});
-
 const posts = [
   { date: "Nov 18, 2025", tag: "Achievement", t: "Excella debaters take regional finals", d: "Our senior team brought home gold in the Eastern Province debate championship.", img: debate },
   { date: "Nov 12, 2025", tag: "Event", t: "Annual Science & Innovation Fair returns", d: "Students presented original research, robotics, and sustainability projects.", img: science },
@@ -31,7 +18,7 @@ const posts = [
   { date: "Oct 02, 2025", tag: "Community", t: "Parent partnership evenings begin", d: "A new monthly forum to connect families with our educators.", img: classroom },
 ];
 
-function News() {
+export function News() {
   return (
     <>
       <PageHero
@@ -45,7 +32,7 @@ function News() {
         {posts.map((n, i) => (
           <Reveal key={i} delay={(i % 3) * 0.08}>
             <article className="group h-full rounded-3xl overflow-hidden border border-border bg-card hover:shadow-elegant transition-shadow">
-              <div className="aspect-[16/10] overflow-hidden">
+              <div className="aspect-16/10 overflow-hidden">
                 <img src={n.img} alt={n.t} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
               </div>
               <div className="p-6">

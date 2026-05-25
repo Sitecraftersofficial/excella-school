@@ -1,4 +1,3 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
 import { CTASection } from "@/components/site/CTASection";
@@ -7,19 +6,6 @@ import trophies from "@/assets/excella-trophies.jpeg";
 import debate from "@/assets/excella-debate.jpeg";
 import awards from "@/assets/excella-awards.jpeg";
 import classroom from "@/assets/excella-classroom.jpeg";
-
-export const Route = createFileRoute("/student-life")({
-  head: () => ({
-    meta: [
-      { title: "Student Life — Clubs, Sports & Leadership | Excella School" },
-      { name: "description", content: "From debate to athletics, leadership to the arts — explore the vibrant student life that shapes character at Excella School." },
-      { property: "og:title", content: "Student Life at Excella" },
-      { property: "og:description", content: "Clubs, sports, leadership, trips and achievements that shape character." },
-    ],
-    links: [{ rel: "canonical", href: "/student-life" }],
-  }),
-  component: StudentLife,
-});
 
 const pillars = [
   { icon: Trophy, t: "Sports", d: "Football, basketball, athletics and more." },
@@ -30,7 +16,7 @@ const pillars = [
   { icon: Heart, t: "Service", d: "Community projects with real impact." },
 ];
 
-function StudentLife() {
+export function StudentLife() {
   return (
     <>
       <PageHero
@@ -58,7 +44,7 @@ function StudentLife() {
         </Reveal>
         <div className="mt-12 grid md:grid-cols-6 gap-4">
           {[
-            { img: trophies, t: "Regional debate champions", span: "md:col-span-4 aspect-[16/10]" },
+            { img: trophies, t: "Regional debate champions", span: "md:col-span-4 aspect-16/10" },
             { img: awards, t: "Excellence awards 2025", span: "md:col-span-2 md:row-span-2 aspect-square md:aspect-auto" },
             { img: debate, t: "Public speaking finals", span: "md:col-span-2 aspect-square" },
             { img: classroom, t: "House spirit week", span: "md:col-span-2 aspect-square" },
@@ -66,7 +52,7 @@ function StudentLife() {
             <Reveal key={i} delay={i * 0.06} className={s.span}>
               <div className="group relative h-full overflow-hidden rounded-3xl">
                 <img src={s.img} alt={s.t} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/30 to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-ink via-ink/30 to-transparent" />
                 <p className="absolute bottom-6 left-6 right-6 text-ink-foreground text-lg font-display">{s.t}</p>
               </div>
             </Reveal>

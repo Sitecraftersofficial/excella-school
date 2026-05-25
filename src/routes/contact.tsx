@@ -1,23 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
 import { Mail, Phone, MapPin, MessageCircle, Clock } from "lucide-react";
 import campus from "@/assets/excella-campus.jpeg";
 
-export const Route = createFileRoute("/contact")({
-  head: () => ({
-    meta: [
-      { title: "Contact Excella School — Kigali, Rwanda" },
-      { name: "description", content: "Get in touch with Excella School. Visit our Kigali campus, message us on WhatsApp, or send an inquiry." },
-      { property: "og:title", content: "Contact Excella" },
-      { property: "og:description", content: "Visit, call, or message us anytime." },
-    ],
-    links: [{ rel: "canonical", href: "/contact" }],
-  }),
-  component: Contact,
-});
-
-function Contact() {
+export function Contact() {
   return (
     <>
       <PageHero
@@ -66,12 +52,11 @@ function Contact() {
 
       <section className="container-px mx-auto max-w-7xl pb-24">
         <Reveal>
-          <div className="rounded-3xl overflow-hidden border border-border aspect-[21/9]">
+          <div className="rounded-3xl overflow-hidden border border-border aspect-21/9">
             <iframe
               title="Excella School location"
               src="https://www.openstreetmap.org/export/embed.html?bbox=30.0%2C-1.97%2C30.14%2C-1.93&layer=mapnik"
               className="w-full h-full"
-              loading="lazy"
             />
           </div>
         </Reveal>

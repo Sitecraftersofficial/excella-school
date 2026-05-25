@@ -1,26 +1,12 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { CTASection } from "@/components/site/CTASection";
 import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
-import { CTASection } from "@/components/site/CTASection";
 import { Target, Eye, Heart, Award, Users, BookOpen } from "lucide-react";
 import campus from "@/assets/excella-campus.jpeg";
 import awards from "@/assets/excella-awards.jpeg";
 import classroom from "@/assets/excella-classroom.jpeg";
 
-export const Route = createFileRoute("/about")({
-  head: () => ({
-    meta: [
-      { title: "About Excella School — Our Story, Mission & Vision" },
-      { name: "description", content: "Discover the Excella story: a premium Kigali school where global standards meet Rwandan values. Mission, vision, leadership and academic philosophy." },
-      { property: "og:title", content: "About Excella School" },
-      { property: "og:description", content: "A premium Kigali school where global standards meet Rwandan values." },
-    ],
-    links: [{ rel: "canonical", href: "/about" }],
-  }),
-  component: About,
-});
-
-function About() {
+export function About() {
   return (
     <>
       <PageHero
@@ -42,7 +28,7 @@ function About() {
           </p>
         </Reveal>
         <Reveal className="lg:col-span-6" delay={0.1}>
-          <img src={awards} alt="Excella community" className="rounded-3xl aspect-[4/3] object-cover w-full shadow-elegant" />
+          <img src={awards} alt="Excella community" className="rounded-3xl aspect-4/3 object-cover w-full shadow-elegant" />
         </Reveal>
       </section>
 
@@ -105,7 +91,7 @@ function About() {
           ].map((p, i) => (
             <Reveal key={i} delay={i * 0.06}>
               <div className="group rounded-3xl overflow-hidden bg-card border border-border">
-                <div className="aspect-[4/5] overflow-hidden">
+                <div className="aspect-4/5 overflow-hidden">
                   <img src={p.img} alt={p.name} className="h-full w-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
                 </div>
                 <div className="p-5">

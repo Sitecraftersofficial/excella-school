@@ -1,4 +1,4 @@
-import { Link, useRouterState } from "@tanstack/react-router";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import logo from "@/assets/excella-logo.jpeg";
@@ -17,7 +17,7 @@ const nav = [
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const { location } = useRouterState();
+  const location = useLocation();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -30,9 +30,8 @@ export function SiteHeader() {
 
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
-        scrolled ? "glass border-b border-border/60" : "bg-transparent"
-      }`}
+      className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${scrolled ? "glass border-b border-border/60" : "bg-transparent"
+        }`}
     >
       <div className="container-px mx-auto max-w-7xl flex items-center justify-between h-16 md:h-20">
         <Link to="/" className="flex items-center gap-3">
@@ -40,16 +39,18 @@ export function SiteHeader() {
         </Link>
         <nav className="hidden lg:flex items-center gap-1">
           {nav.map((item) => (
-            <Link
+            <NavLink
               key={item.to}
               to={item.to}
-              className="px-3 py-2 text-sm font-medium text-foreground/80 hover:text-foreground transition-colors relative group"
-              activeProps={{ className: "text-primary" }}
-              activeOptions={{ exact: item.to === "/" }}
+              end={item.to === "/"}
+              className={({ isActive }) =>
+                `px-3 py-2 text-sm font-medium transition-colors relative group ${isActive ? "text-primary" : "text-foreground/80 hover:text-foreground"
+                }`
+              }
             >
               {item.label}
               <span className="absolute left-3 right-3 -bottom-0.5 h-px bg-primary scale-x-0 group-hover:scale-x-100 origin-left transition-transform" />
-            </Link>
+            </NavLink>
           ))}
         </nav>
         <div className="hidden lg:flex items-center gap-3">
@@ -72,15 +73,17 @@ export function SiteHeader() {
         <div className="lg:hidden glass border-t border-border/60">
           <nav className="container-px mx-auto max-w-7xl py-4 flex flex-col gap-1">
             {nav.map((item) => (
-              <Link
+              <NavLink
                 key={item.to}
                 to={item.to}
-                className="px-3 py-3 rounded-md text-sm font-medium text-foreground/80 hover:bg-accent"
-                activeProps={{ className: "text-primary" }}
-                activeOptions={{ exact: item.to === "/" }}
+                end={item.to === "/"}
+                className={({ isActive }) =>
+                  `px-3 py-3 rounded-md text-sm font-medium ${isActive ? "text-primary" : "text-foreground/80 hover:bg-accent"
+                  }`
+                }
               >
                 {item.label}
-              </Link>
+              </NavLink>
             ))}
             <Link
               to="/admissions"

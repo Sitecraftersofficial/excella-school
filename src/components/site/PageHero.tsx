@@ -6,7 +6,7 @@ export function PageHero({ eyebrow, title, subtitle, image }: { eyebrow: string;
       {image && (
         <div className="absolute inset-0 opacity-25">
           <img src={image} alt="" className="h-full w-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-b from-ink/40 via-ink/70 to-ink" />
+          <div className="absolute inset-0 bg-linear-to-b from-ink/40 via-ink/70 to-ink" />
         </div>
       )}
       <div className="absolute inset-0 gradient-radial opacity-50" />

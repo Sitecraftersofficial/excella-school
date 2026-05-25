@@ -1,22 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
 import { ClipboardCheck, FileText, Calendar, GraduationCap, MessageCircle, ChevronDown, Phone } from "lucide-react";
 import campus from "@/assets/excella-campus.jpeg";
-
-export const Route = createFileRoute("/admissions")({
-  head: () => ({
-    meta: [
-      { title: "Admissions — Apply to Excella School, Kigali" },
-      { name: "description", content: "Begin your child's Excella journey. Admission steps, requirements, tuition inquiry, scholarships and quick WhatsApp contact." },
-      { property: "og:title", content: "Admissions at Excella" },
-      { property: "og:description", content: "Apply, book a tour, or speak with our admissions team today." },
-    ],
-    links: [{ rel: "canonical", href: "/admissions" }],
-  }),
-  component: Admissions,
-});
 
 const steps = [
   { icon: MessageCircle, t: "Inquire", d: "Submit the inquiry form or message us on WhatsApp." },
@@ -34,7 +20,7 @@ const faqs = [
   { q: "When can I visit the campus?", a: "Tours are available Monday–Friday by appointment. Use the form below or WhatsApp to schedule." },
 ];
 
-function Admissions() {
+export function Admissions() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   return (
     <>
@@ -76,7 +62,7 @@ function Admissions() {
               <Field label="Phone / WhatsApp" required><input className="input" placeholder="+250 ..." required /></Field>
               <Field label="Student age / grade"><input className="input" placeholder="e.g. 8 / Grade 3" /></Field>
               <Field label="Preferred pathway" className="sm:col-span-2">
-                <select className="input">
+                <select className="input" aria-label="Preferred pathway">
                   <option>American Montessori</option>
                   <option>SAT Preparation</option>
                   <option>Rwandan National Curriculum</option>
@@ -88,7 +74,7 @@ function Admissions() {
               </Field>
               <div className="sm:col-span-2 flex flex-wrap gap-3 mt-2">
                 <button className="inline-flex items-center justify-center rounded-full bg-primary text-primary-foreground px-6 py-3.5 font-semibold hover:opacity-90 transition">Submit Inquiry</button>
-                <a href="https://wa.me/250788000000" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3.5 font-semibold hover:bg-accent">
+                <a href="https://wa.me/250788000000" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3.5 font-semibold hover:bg-accent">
                   <MessageCircle className="h-4 w-4" /> WhatsApp Us
                 </a>
               </div>
@@ -118,17 +104,19 @@ function Admissions() {
         <div className="mt-10 divide-y divide-border border-y border-border">
           {faqs.map((f, i) => (
             <Reveal key={i} delay={i * 0.04}>
-              <button
-                onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                className="w-full text-left py-5 flex items-start justify-between gap-6"
-                aria-expanded={openFaq === i}
+              <details
+                className="w-full rounded-none"
+                open={openFaq === i}
+                onToggle={(e) => setOpenFaq((e.target as HTMLDetailsElement).open ? i : null)}
               >
-                <span className="font-medium text-lg">{f.q}</span>
-                <ChevronDown className={`h-5 w-5 mt-1 shrink-0 text-muted-foreground transition-transform ${openFaq === i ? "rotate-180 text-primary" : ""}`} />
-              </button>
-              <div className={`grid transition-all overflow-hidden ${openFaq === i ? "grid-rows-[1fr] pb-5" : "grid-rows-[0fr]"}`}>
-                <p className="min-h-0 text-muted-foreground leading-relaxed pr-10">{f.a}</p>
-              </div>
+                <summary className="w-full text-left py-5 flex items-start justify-between gap-6 cursor-pointer list-none">
+                  <span className="font-medium text-lg">{f.q}</span>
+                  <ChevronDown className={`h-5 w-5 mt-1 shrink-0 text-muted-foreground transition-transform ${openFaq === i ? "rotate-180 text-primary" : ""}`} />
+                </summary>
+                <div className="grid transition-all overflow-hidden grid-rows-[1fr] pb-5">
+                  <p className="min-h-0 text-muted-foreground leading-relaxed pr-10">{f.a}</p>
+                </div>
+              </details>
             </Reveal>
           ))}
         </div>

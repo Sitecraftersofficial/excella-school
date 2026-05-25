@@ -1,24 +1,10 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { CTASection } from "@/components/site/CTASection";
 import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
-import { CTASection } from "@/components/site/CTASection";
 import { Sparkles, Globe, BookOpen, Languages, Trophy, Brain } from "lucide-react";
 import scienceImg from "@/assets/excella-science.jpeg";
 import classroom from "@/assets/excella-classroom.jpeg";
 import debate from "@/assets/excella-debate.jpeg";
-
-export const Route = createFileRoute("/academics")({
-  head: () => ({
-    meta: [
-      { title: "Academics — American Montessori, SAT & Rwandan Curriculum | Excella" },
-      { name: "description", content: "Explore Excella's academic pathways: American Montessori, SAT preparation, and the Rwandan National Curriculum across Early Years, Primary and Secondary." },
-      { property: "og:title", content: "Academics at Excella" },
-      { property: "og:description", content: "One school. Multiple academic pathways. Future-ready students." },
-    ],
-    links: [{ rel: "canonical", href: "/academics" }],
-  }),
-  component: Academics,
-});
 
 const stages = [
   { tag: "Early Years", t: "Montessori-inspired beginnings", d: "Curiosity, independence and joy — a foundation that lasts a lifetime.", img: classroom },
@@ -32,7 +18,7 @@ const pathways = [
   { icon: BookOpen, t: "Rwandan National Curriculum", d: "Flexible pathway aligned with Rwanda's national standards, delivered with the same premium care and outcomes." },
 ];
 
-function Academics() {
+export function Academics() {
   return (
     <>
       <PageHero
@@ -48,7 +34,7 @@ function Academics() {
           <Reveal key={i}>
             <div className={`grid lg:grid-cols-12 gap-10 items-center ${i % 2 ? "lg:[&>*:first-child]:order-2" : ""}`}>
               <div className="lg:col-span-6">
-                <img src={s.img} alt={s.t} className="rounded-3xl aspect-[4/3] object-cover w-full shadow-elegant" />
+                <img src={s.img} alt={s.t} className="rounded-3xl aspect-4/3 object-cover w-full shadow-elegant" />
               </div>
               <div className="lg:col-span-6">
                 <p className="text-xs uppercase tracking-[0.25em] text-primary font-semibold">{s.tag}</p>
@@ -71,7 +57,7 @@ function Academics() {
           <div className="mt-14 grid md:grid-cols-3 gap-5">
             {pathways.map((p, i) => (
               <Reveal key={i} delay={i * 0.08}>
-                <div className="h-full rounded-3xl border border-white/10 bg-white/[0.03] p-8">
+                <div className="h-full rounded-3xl border border-white/10 bg-white/3 p-8">
                   <div className="h-12 w-12 rounded-xl bg-primary text-primary-foreground grid place-items-center"><p.icon className="h-6 w-6" /></div>
                   <h3 className="mt-6 text-2xl">{p.t}</h3>
                   <p className="mt-3 text-ink-foreground/70 leading-relaxed">{p.d}</p>
