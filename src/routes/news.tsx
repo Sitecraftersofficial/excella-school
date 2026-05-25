@@ -33,7 +33,7 @@ export function News() {
           <Reveal key={i} delay={(i % 3) * 0.08}>
             <article className="group h-full rounded-3xl overflow-hidden border border-border bg-card hover:shadow-elegant transition-shadow">
               <div className="aspect-16/10 overflow-hidden">
-                <img src={n.img} alt={n.t} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <img src={n.img} alt={n.t} className={n.img === debate ? "h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105" : "h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"} />
               </div>
               <div className="p-6">
                 <div className="flex items-center gap-3 text-xs text-muted-foreground">

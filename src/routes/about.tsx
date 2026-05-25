@@ -28,7 +28,7 @@ export function About() {
           </p>
         </Reveal>
         <Reveal className="lg:col-span-6" delay={0.1}>
-          <img src={awards} alt="Excella community" className="rounded-3xl aspect-4/3 object-cover w-full shadow-elegant" />
+          <img src={awards} alt="Excella community" className="rounded-3xl aspect-4/3 object-cover object-center w-full shadow-elegant" />
         </Reveal>
       </section>
 
@@ -92,7 +92,7 @@ export function About() {
             <Reveal key={i} delay={i * 0.06}>
               <div className="group rounded-3xl overflow-hidden bg-card border border-border">
                 <div className="aspect-4/5 overflow-hidden">
-                  <img src={p.img} alt={p.name} className="h-full w-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
+                  <img src={p.img} alt={p.name} className="h-full w-full object-cover object-center grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
                 </div>
                 <div className="p-5">
                   <p className="font-display text-lg">{p.name}</p>

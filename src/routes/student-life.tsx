@@ -51,7 +51,7 @@ export function StudentLife() {
           ].map((s, i) => (
             <Reveal key={i} delay={i * 0.06} className={s.span}>
               <div className="group relative h-full overflow-hidden rounded-3xl">
-                <img src={s.img} alt={s.t} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <img src={s.img} alt={s.t} className={s.img === debate ? "h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105" : "h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105"} />
                 <div className="absolute inset-0 bg-linear-to-t from-ink via-ink/30 to-transparent" />
                 <p className="absolute bottom-6 left-6 right-6 text-ink-foreground text-lg font-display">{s.t}</p>
               </div>
