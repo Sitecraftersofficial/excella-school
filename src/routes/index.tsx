@@ -12,8 +12,13 @@ import classroomImg from "@/assets/excella-classroom.jpeg";
 import trophiesImg from "@/assets/excella-trophies.jpeg";
 import awardsImg from "@/assets/excella-awards.jpeg";
 import debateImg from "@/assets/excella-debate.jpeg";
+import logoImg from "@/assets/excella-logo.jpeg";
 import excella2Video from "@/assets/Excella-2.mp4";
 import virtualTourVideo from "@/assets/Excella-Virtualtour.mp4";
+import academicBridgeLogo from "@/assets/academicbridgelogo.png";
+import siteCraftersLogo from "@/assets/siteCraftersLogo.png";
+import satLogo from "@/assets/sat-logo.jpg";
+import universityLogo from "@/assets/university-logopreview.png";
 
 const carouselSlides = [
   campusImg,
@@ -25,6 +30,8 @@ const carouselSlides = [
 ];
 
 const rollingSlides = [...carouselSlides, ...carouselSlides];
+
+const partnersLogos = [academicBridgeLogo, siteCraftersLogo, satLogo, universityLogo];
 
 function Counter({ end, suffix = "" }: { end: number; suffix?: string }) {
   const [val, setVal] = useState(0);
@@ -447,6 +454,27 @@ export function Home() {
               </article>
             </Reveal>
           ))}
+        </div>
+      </section>
+
+      {/* PARTNERS */}
+      <section className="container-px mx-auto max-w-7xl pb-24">
+        <Reveal>
+          <p className="text-xs uppercase tracking-[0.25em] text-primary font-semibold text-center">Our partners</p>
+          <h2 className="mt-3 text-3xl md:text-5xl font-display text-center">Trusted collaborations</h2>
+        </Reveal>
+        <div className="mt-10 flex flex-nowrap items-start justify-center gap-6 md:gap-10 overflow-x-auto pb-4">
+          {partnersLogos.map((logo, i) => {
+            const topRow = i % 2 === 0;
+
+            return (
+              <Reveal key={i} delay={i * 0.04}>
+                <div className={`shrink-0 rounded-2xl border border-border bg-card p-6 flex items-center justify-center hover:border-primary/40 transition-colors ${topRow ? "mt-0" : "mt-14 md:mt-20"}`}>
+                  <img src={logo} alt="Partner logo" className="h-12 md:h-16 w-auto object-contain" />
+                </div>
+              </Reveal>
+            );
+          })}
         </div>
       </section>
 
