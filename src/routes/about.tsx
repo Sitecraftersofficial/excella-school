@@ -21,7 +21,7 @@ export function About() {
           <p className="text-xs uppercase tracking-[0.25em] text-primary font-semibold">Our story</p>
           <h2 className="mt-4 text-4xl md:text-5xl font-display text-balance">Global education with local relevance.</h2>
           <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-            Excella School was founded with a bold idea: that students in Rwanda deserve a school that competes with the very best, anywhere. Today, we are proud to deliver an American Montessori foundation, internationally recognized SAT preparation, and the Rwandan National Curriculum — all under one roof.
+            Excella School was founded with a bold idea: that students in Rwanda deserve a school that competes with the very best, anywhere. Today, we are proud to deliver American Montessori and the Rwandan National Curriculum — all under one roof, with SAT as a core part of the secondary Montessori program.
           </p>
           <p className="mt-4 text-muted-foreground leading-relaxed">
             More than programs, we cultivate a culture — one of curiosity, courage, and care. Our students learn to think critically, lead boldly, and serve generously.
@@ -61,7 +61,7 @@ export function About() {
           {[
             { icon: Award, t: "Internationally benchmarked", d: "Standards aligned with leading global schools." },
             { icon: Users, t: "Small, attentive classes", d: "Each child known by name — and by potential." },
-            { icon: BookOpen, t: "Three pathways, one school", d: "Montessori, SAT, and Rwandan curriculum integrated thoughtfully." },
+            { icon: BookOpen, t: "Two programs, one school", d: "American Montessori and the Rwandan National Curriculum delivered with excellence." },
             { icon: Heart, t: "Whole-child approach", d: "Academics, character, arts, and athletics in harmony." },
             { icon: Target, t: "University & career ready", d: "Counseling and SAT prep from early secondary." },
             { icon: Eye, t: "Parent partnership", d: "Open communication and transparent reporting." },

@@ -9,7 +9,7 @@ export function SiteFooter() {
         <div>
           <img src={logo} alt="Excella School" className="h-12 w-auto rounded-sm bg-white p-1.5" />
           <p className="mt-5 text-sm text-ink-foreground/70 leading-relaxed max-w-xs">
-            Global education with local relevance. One premium school. Multiple pathways to success.
+            Global education with local relevance. One premium school. Two strong programs for success.
           </p>
           <div className="mt-6 flex gap-3">
             {[Instagram, Facebook, Youtube].map((Icon, i) => (

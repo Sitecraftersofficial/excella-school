@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { motion, useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import {
-  ArrowRight, GraduationCap, ShieldCheck, Users, Sparkles, Globe, Trophy, Compass, BookOpen, Laptop, Quote, Calendar, Play
+  ArrowRight, GraduationCap, ShieldCheck, Users, Sparkles, Trophy, Compass, BookOpen, Laptop, Quote, Calendar, Play
 } from "lucide-react";
 import { Reveal } from "@/components/site/Reveal";
 import { CTASection } from "@/components/site/CTASection";
@@ -120,7 +120,7 @@ export function Home() {
               Where excellence<br />meets <em className="text-primary not-italic">opportunity</em>.
             </h1>
             <p className="mt-7 max-w-2xl text-lg md:text-xl text-ink-foreground/80 text-balance">
-              A premium school in the heart of Kigali — blending American Montessori, SAT preparation, and the Rwandan National Curriculum. One school. Multiple pathways. Limitless futures.
+              A premium school in the heart of Kigali — offering American Montessori and the Rwandan National Curriculum. SAT is a core part of the secondary Montessori program.
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <Link to="/admissions" className="group inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-7 py-4 font-semibold hover:opacity-90 transition shadow-glow">
@@ -203,7 +203,7 @@ export function Home() {
             </Reveal>
             <Reveal delay={0.1}>
               <h2 className="mt-4 text-4xl md:text-6xl font-display text-balance">
-                One school. Multiple pathways to success.
+                One school. Two programs. Endless futures.
               </h2>
             </Reveal>
             <Reveal delay={0.2}>
@@ -212,10 +212,9 @@ export function Home() {
               </p>
             </Reveal>
           </div>
-          <div className="mt-14 grid md:grid-cols-3 gap-5">
+          <div className="mt-14 grid md:grid-cols-2 gap-5">
             {[
-              { icon: Sparkles, badge: "Foundation", t: "American Montessori", d: "Student-centered learning that builds independence, creativity, and confident academic foundations." },
-              { icon: Globe, badge: "Global", t: "SAT Preparation", d: "Structured preparation for international university opportunities with expert guidance." },
+              { icon: Sparkles, badge: "Foundation", t: "American Montessori", d: "Student-centered learning that builds independence, creativity, and confident academic foundations, with SAT as a core part of secondary Montessori." },
               { icon: BookOpen, badge: "National", t: "Rwandan Curriculum", d: "Rwanda's national standards delivered with the same premium care and excellence." },
             ].map((p, i) => (
               <Reveal key={i} delay={i * 0.1}>

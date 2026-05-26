@@ -1,7 +1,7 @@
 import { CTASection } from "@/components/site/CTASection";
 import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
-import { Sparkles, Globe, BookOpen, Languages, Trophy, Brain } from "lucide-react";
+import { Sparkles, BookOpen, Languages, Trophy, Brain } from "lucide-react";
 import scienceImg from "@/assets/excella-science.jpeg";
 import classroom from "@/assets/excella-classroom.jpeg";
 import debate from "@/assets/excella-debate.jpeg";
@@ -13,8 +13,7 @@ const stages = [
 ];
 
 const pathways = [
-  { icon: Sparkles, t: "American Montessori", d: "Independent learning, creativity, and confidence — guided by trained Montessori educators in carefully prepared environments." },
-  { icon: Globe, t: "SAT Preparation", d: "Comprehensive readiness for international universities — diagnostic testing, structured coaching, and university counseling." },
+  { icon: Sparkles, t: "American Montessori", d: "Independent learning, creativity, and confidence — guided by trained Montessori educators, with SAT as a core part of secondary Montessori." },
   { icon: BookOpen, t: "Rwandan National Curriculum", d: "Flexible pathway aligned with Rwanda's national standards, delivered with the same premium care and outcomes." },
 ];
 
@@ -24,7 +23,7 @@ export function Academics() {
       <PageHero
         eyebrow="Academics"
         title="A premium academic experience, designed for every learner."
-        subtitle="Three pathways. One school. Every student known, challenged, and supported."
+        subtitle="Two programs. One school. Every student known, challenged, and supported."
         image={scienceImg}
       />
 
@@ -54,7 +53,7 @@ export function Academics() {
             <p className="text-xs uppercase tracking-[0.25em] text-primary font-semibold">Curriculum options</p>
             <h2 className="mt-3 text-4xl md:text-5xl font-display max-w-3xl">Choose the pathway that fits your child.</h2>
           </Reveal>
-          <div className="mt-14 grid md:grid-cols-3 gap-5">
+          <div className="mt-14 grid md:grid-cols-2 gap-5">
             {pathways.map((p, i) => (
               <Reveal key={i} delay={i * 0.08}>
                 <div className="h-full rounded-3xl border border-white/10 bg-white/3 p-8">
