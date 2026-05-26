@@ -393,6 +393,39 @@ export function Home() {
       </section>
 
       {/* TESTIMONIALS */}
+      {/* WISDOM LAB */}
+      <section className="container-px mx-auto max-w-7xl py-24 md:py-32">
+        <div className="grid lg:grid-cols-12 gap-12 items-center">
+          <Reveal className="lg:col-span-7">
+            <p className="text-xs uppercase tracking-[0.25em] text-primary font-semibold">Wisdom Lab</p>
+            <h2 className="mt-4 text-4xl md:text-5xl font-display text-balance">Life lessons led by our director.</h2>
+            <p className="mt-5 text-lg text-muted-foreground leading-relaxed">Wisdom Lab is a termly lecture series led by the Head of School. Each session presents curated quotes and reflections from influential leaders — Nelson Mandela, Mahatma Gandhi, Albert Einstein, Martin Luther King Jr., Steve Jobs, and others — followed by practical life lessons, personal experiences, and values-based discussion designed to build leadership, discipline, responsibility, perseverance, and personal growth.</p>
+            <ul className="mt-6 grid grid-cols-2 gap-3">
+              {[
+                "Leadership",
+                "Discipline",
+                "Responsibility",
+                "Perseverance",
+                "Integrity",
+                "Personal growth",
+              ].map((v) => (
+                <li key={v} className="flex items-center gap-3 text-foreground/85">
+                  <span className="h-2 w-2 rounded-full bg-primary" /> {v}
+                </li>
+              ))}
+            </ul>
+            <p className="mt-6 text-muted-foreground">At the end of every term students sit a Life Skills exam which reflects lessons, ideas, and reflections from Wisdom Lab sessions. The School Director is the primary speaker and mentor for these lessons, and students actively contribute to the discussions.</p>
+          </Reveal>
+          <Reveal className="lg:col-span-5" delay={0.1}>
+            <div className="group relative overflow-hidden rounded-3xl border border-border bg-card p-8 flex flex-col items-center text-center shadow-elegant">
+              <img src={excella1Img} alt="School Director" className="h-40 w-40 rounded-full object-cover shadow-md" />
+              <p className="mt-5 font-display text-xl">Mr. Theo</p>
+              <p className="text-sm text-muted-foreground">School Director</p>
+              <blockquote className="mt-4 text-sm italic text-muted-foreground">“We don't just teach subjects. We grow people.”</blockquote>
+            </div>
+          </Reveal>
+        </div>
+      </section>
       <section className="bg-secondary py-24 md:py-32">
         <div className="container-px mx-auto max-w-7xl">
           <Reveal>
@@ -540,3 +573,5 @@ export function Home() {
     </>
   );
 }
+
+// Wisdom Lab: special life-skills lecture section (director-led)
