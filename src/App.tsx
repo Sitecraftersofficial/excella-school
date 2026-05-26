@@ -1,6 +1,6 @@
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { LoadingScreen } from "@/components/site/LoadingScreen";
@@ -13,6 +13,16 @@ import { Gallery } from "@/routes/gallery";
 import { Home } from "@/routes/index";
 import { News } from "@/routes/news";
 import { StudentLife } from "@/routes/student-life";
+
+function ScrollToTop() {
+    const location = useLocation();
+
+    useEffect(() => {
+        window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    }, [location.pathname]);
+
+    return null;
+}
 
 export default function App() {
     const reduceMotion = useReducedMotion();
@@ -57,6 +67,7 @@ export default function App() {
                     transition={{ duration: 0.35 }}
                 >
                     <SiteHeader />
+                    <ScrollToTop />
                     <main>
                         <Routes>
                             <Route path="/" element={<Home />} />

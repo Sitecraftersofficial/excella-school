@@ -84,10 +84,10 @@ export function About() {
         </Reveal>
         <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {[
-            { name: "Mrs. M. Uwase", role: "Head of School", img: awards },
-            { name: "Mr. J. Habimana", role: "Director of Academics", img: classroom },
-            { name: "Ms. P. Mukamana", role: "Head of Primary", img: awards },
-            { name: "Mr. D. Niyonsenga", role: "Head of Secondary", img: classroom },
+            { name: "Madam Peace", role: "Deputy Director", img: awards },
+            { name: "Mr. Theo", role: "Director", img: classroom },
+            { name: "Madam Marie", role: "Secretary", img: awards },
+            { name: "TR Godfrey", role: "Director of Studies", img: classroom },
           ].map((p, i) => (
             <Reveal key={i} delay={i * 0.06}>
               <div className="group rounded-3xl overflow-hidden bg-card border border-border">

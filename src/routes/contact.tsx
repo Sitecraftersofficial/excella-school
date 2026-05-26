@@ -55,7 +55,7 @@ export function Contact() {
           <div className="rounded-3xl overflow-hidden border border-border aspect-21/9">
             <iframe
               title="Excella School location"
-              src="https://www.openstreetmap.org/export/embed.html?bbox=30.0%2C-1.97%2C30.14%2C-1.93&layer=mapnik"
+              src="https://www.google.com/maps?q=Excella%20School&output=embed"
               className="w-full h-full"
             />
           </div>

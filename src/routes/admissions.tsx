@@ -8,14 +8,14 @@ const steps = [
   { icon: MessageCircle, t: "Inquire", d: "Submit the inquiry form or message us on WhatsApp." },
   { icon: Calendar, t: "Visit", d: "Book a school tour and meet our educators." },
   { icon: FileText, t: "Apply", d: "Complete the application and submit required documents." },
-  { icon: ClipboardCheck, t: "Assessment", d: "Friendly age-appropriate assessment and family interview." },
+  { icon: ClipboardCheck, t: "Getting approved", d: "Your application is reviewed and approved for enrollment." },
   { icon: GraduationCap, t: "Welcome", d: "Receive your offer and join the Excella family." },
 ];
 
 const faqs = [
   { q: "What ages do you accept?", a: "Excella accepts students from Early Years through Secondary School. Specific entry ages depend on the selected pathway." },
   { q: "Which curricula do you offer?", a: "American Montessori, SAT Preparation, and the Rwandan National Curriculum — all under one school." },
-  { q: "Are scholarships available?", a: "Limited merit and needs-based scholarships are reviewed annually. Please contact admissions for current openings." },
+  { q: "How do I learn about tuition?", a: "Tuition varies by program and grade. Please contact admissions for current fees and placement guidance." },
   { q: "What documents do I need to apply?", a: "A completed application form, recent academic reports, copy of birth certificate/passport, and one passport photo." },
   { q: "When can I visit the campus?", a: "Tours are available Monday–Friday by appointment. Use the form below or WhatsApp to schedule." },
 ];
@@ -84,8 +84,8 @@ export function Admissions() {
 
         <Reveal className="lg:col-span-5 space-y-5" delay={0.1}>
           <div className="rounded-3xl bg-ink text-ink-foreground p-8">
-            <h4 className="text-xl font-display">Tuition & scholarships</h4>
-            <p className="mt-3 text-ink-foreground/70 text-sm leading-relaxed">Tuition varies by program and grade. Limited merit and needs-based scholarships are offered annually. Contact admissions for current fees and openings.</p>
+            <h4 className="text-xl font-display">Tuition & fees</h4>
+            <p className="mt-3 text-ink-foreground/70 text-sm leading-relaxed">Tuition varies by program and grade. Contact admissions for current fees, placement guidance, and enrollment details.</p>
             <a href="mailto:admissions@excella.school" className="mt-5 inline-flex text-primary font-semibold hover:opacity-90">admissions@excella.school →</a>
           </div>
           <div className="rounded-3xl border border-border p-8 bg-card">

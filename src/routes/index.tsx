@@ -13,38 +13,92 @@ import trophiesImg from "@/assets/excella-trophies.jpeg";
 import awardsImg from "@/assets/excella-awards.jpeg";
 import debateImg from "@/assets/excella-debate.jpeg";
 import excella2Video from "@/assets/Excella-2.mp4";
+import virtualTourVideo from "@/assets/Excella-Virtualtour.mp4";
+
+const carouselSlides = [
+  campusImg,
+  scienceImg,
+  classroomImg,
+  trophiesImg,
+  awardsImg,
+  debateImg,
+];
+
+const rollingSlides = [...carouselSlides, ...carouselSlides];
 
 function Counter({ end, suffix = "" }: { end: number; suffix?: string }) {
   const [val, setVal] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
   const started = useRef(false);
+
   useEffect(() => {
     const obs = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting && !started.current) {
         started.current = true;
-        const duration = 1800; const start = performance.now();
+        const duration = 1800;
+        const start = performance.now();
+
         const tick = (now: number) => {
           const p = Math.min(1, (now - start) / duration);
           const eased = 1 - Math.pow(1 - p, 3);
           setVal(Math.round(end * eased));
-          if (p < 1) requestAnimationFrame(tick);
+
+          if (p < 1) {
+            requestAnimationFrame(tick);
+          }
         };
+
         requestAnimationFrame(tick);
       }
     }, { threshold: 0.4 });
-    if (ref.current) obs.observe(ref.current);
+
+    if (ref.current) {
+      obs.observe(ref.current);
+    }
+
     return () => obs.disconnect();
   }, [end]);
+
   return <span ref={ref}>{val}{suffix}</span>;
+}
+
+function HomeCarousel() {
+  const reduceMotion = useReducedMotion();
+
+  return (
+    <section className="container-px mx-auto max-w-7xl pb-24 md:pb-32">
+      <div className="overflow-hidden rounded-3xl">
+        <div className={reduceMotion ? "flex w-max" : "marquee-track flex w-max"}>
+          {rollingSlides.map((slide, i) => (
+            <img
+              key={i}
+              src={slide}
+              alt="Excella School campus"
+              className="h-88 w-88 shrink-0 object-cover object-center md:h-112 md:w-md lg:h-128 lg:w-lg"
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }
 
 export function Home() {
   const reduce = useReducedMotion();
+  const heroVideoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (heroVideoRef.current) {
+      heroVideoRef.current.playbackRate = 0.5;
+    }
+  }, []);
+
   return (
     <>
       {/* HERO */}
       <section className="relative min-h-dvh flex items-end overflow-hidden bg-ink text-ink-foreground">
         <video
+          ref={heroVideoRef}
           autoPlay muted loop playsInline poster={campusImg}
           className="absolute inset-0 h-full w-full object-cover opacity-60"
         >
@@ -89,8 +143,8 @@ export function Home() {
           {[
             { n: 15, s: "+", label: "Years of excellence" },
             { n: 200, s: "+", label: "Student achievements" },
-            { n: 25, s: "+", label: "Clubs & activities" },
-            { n: 98, s: "%", label: "Academic success" },
+            { n: 20, s: "+", label: "Clubs & activities" },
+            { n: 100, s: "%", label: "Academic success" },
           ].map((stat, i) => (
             <Reveal key={i} delay={i * 0.08} className="text-center md:text-left">
               <div className="text-5xl md:text-6xl font-display text-ink">
@@ -136,6 +190,8 @@ export function Home() {
           ))}
         </div>
       </section>
+
+      <HomeCarousel />
 
       {/* ACADEMIC PATHWAYS */}
       <section className="bg-ink text-ink-foreground py-24 md:py-32 relative overflow-hidden">
@@ -191,7 +247,7 @@ export function Home() {
             Technology that <em className="text-primary not-italic">supports</em> education — not replaces it.
           </h2>
           <p className="mt-5 text-muted-foreground text-lg">
-            From Chromebooks and smart classrooms to research-driven projects, our students learn in modern environments where curiosity meets craftsmanship.
+            From Chromebooks to research-driven projects, our students learn in modern environments where curiosity meets craftsmanship.
           </p>
           <ul className="mt-7 space-y-3">
             {["Chromebook-equipped classrooms", "Guided online and digital assignments", "Research-based, inquiry learning", "Interactive, collaborative pedagogy"].map((item) => (
@@ -351,9 +407,9 @@ export function Home() {
             <div className="absolute bottom-0 left-0 right-0 p-8 md:p-14 text-ink-foreground">
               <p className="text-xs uppercase tracking-[0.25em] text-primary font-semibold">Campus experience</p>
               <h2 className="mt-3 text-3xl md:text-5xl font-display max-w-2xl">A campus designed for inspiration.</h2>
-              <Link to="/gallery" className="mt-5 inline-flex items-center gap-2 rounded-full bg-white text-ink px-5 py-3 text-sm font-semibold hover:opacity-90">
+              <a href={virtualTourVideo} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex items-center gap-2 rounded-full bg-white text-ink px-5 py-3 text-sm font-semibold hover:opacity-90">
                 Take a visual tour <ArrowRight className="h-4 w-4" />
-              </Link>
+              </a>
             </div>
           </div>
         </Reveal>

@@ -1,6 +1,12 @@
 import { Reveal } from "./Reveal";
 
-export function PageHero({ eyebrow, title, subtitle, image }: { eyebrow: string; title: string; subtitle?: string; image?: string }) {
+export function PageHero({
+  eyebrow,
+  title,
+  subtitle,
+  image,
+}: { eyebrow: string; title: string; subtitle?: string; image?: string }) {
+
   return (
     <section className="relative pt-32 md:pt-40 pb-16 md:pb-24 bg-ink text-ink-foreground overflow-hidden">
       {image && (
