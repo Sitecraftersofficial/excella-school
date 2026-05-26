@@ -2,9 +2,9 @@ import { CTASection } from "@/components/site/CTASection";
 import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
 import { Target, Eye, Heart, Award, Users, BookOpen } from "lucide-react";
-import campus from "@/assets/excella-campus.jpeg";
 import awards from "@/assets/excella-awards.jpeg";
 import classroom from "@/assets/excella-classroom.jpeg";
+import campus2 from "@/assets/Excella-campus2.png";
 
 export function About() {
   return (
@@ -13,7 +13,13 @@ export function About() {
         eyebrow="About Excella"
         title="A school built on excellence, character, and opportunity."
         subtitle="From our founding, Excella has stood for one promise: every child deserves an education that prepares them for the world — and shapes the world they'll create."
-        image={campus}
+        image={campus2}
+        imageFit="contain"
+        variant="split"
+        meta={[
+          <span key="1" className="rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.2em]">Founded on care</span>,
+          <span key="2" className="rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.2em]">Two programs</span>,
+        ]}
       />
 
       <section className="container-px mx-auto max-w-7xl py-24 grid lg:grid-cols-12 gap-12 items-center">

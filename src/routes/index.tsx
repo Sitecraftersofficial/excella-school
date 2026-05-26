@@ -7,12 +7,19 @@ import {
 import { Reveal } from "@/components/site/Reveal";
 import { CTASection } from "@/components/site/CTASection";
 import campusImg from "@/assets/excella-campus.jpeg";
+import campus1Img from "@/assets/Excella-campus1.png";
+import campus2Img from "@/assets/Excella-campus2.png";
 import scienceImg from "@/assets/excella-science.jpeg";
 import classroomImg from "@/assets/excella-classroom.jpeg";
 import trophiesImg from "@/assets/excella-trophies.jpeg";
 import awardsImg from "@/assets/excella-awards.jpeg";
 import debateImg from "@/assets/excella-debate.jpeg";
-import logoImg from "@/assets/excella-logo.jpeg";
+import basketballImg from "@/assets/Excella-basketball.png";
+import basketball2Img from "@/assets/Excella-basketball2.png";
+import musicClassImg from "@/assets/Excella-musicclass.png";
+import chromebookImg from "@/assets/chromebook.png";
+import excella1Img from "@/assets/Excella-1.jpeg";
+import logoImg from "@/assets/Excella+Am-logo.jpeg";
 import excella2Video from "@/assets/Excella-2.mp4";
 import virtualTourVideo from "@/assets/Excella-Virtualtour.mp4";
 import academicBridgeLogo from "@/assets/academicbridgelogo.png";
@@ -23,11 +30,18 @@ import plpLogo from "@/assets/plp-logo.png";
 
 const carouselSlides = [
   campusImg,
+  campus1Img,
+  campus2Img,
   scienceImg,
   classroomImg,
   trophiesImg,
   awardsImg,
   debateImg,
+  basketballImg,
+  basketball2Img,
+  musicClassImg,
+  chromebookImg,
+  excella1Img,
 ];
 
 const rollingSlides = [...carouselSlides, ...carouselSlides];
@@ -94,6 +108,7 @@ function HomeCarousel() {
 export function Home() {
   const reduce = useReducedMotion();
   const heroVideoRef = useRef<HTMLVideoElement>(null);
+  const campusVideoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     if (heroVideoRef.current) {
@@ -101,19 +116,49 @@ export function Home() {
     }
   }, []);
 
+  useEffect(() => {
+    if (campusVideoRef.current) {
+      campusVideoRef.current.playbackRate = 0.5;
+    }
+  }, []);
+
   return (
     <>
       {/* HERO */}
-      <section className="relative min-h-dvh flex items-end overflow-hidden bg-ink text-ink-foreground">
-        <video
-          ref={heroVideoRef}
-          autoPlay muted loop playsInline poster={campusImg}
-          className="absolute inset-0 h-full w-full object-cover opacity-60"
-        >
-          <source src={excella2Video} type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-linear-to-t from-ink via-ink/70 to-ink/40" />
-        <div className="absolute inset-0 gradient-radial opacity-60" />
+      <section className="relative min-h-[72vh] md:min-h-[78vh] flex items-end overflow-hidden bg-ink text-ink-foreground">
+        <div className="absolute inset-0 grid grid-cols-1 md:grid-cols-2">
+          <img
+            src={campus1Img}
+            alt="Excella campus 1"
+            className="h-full w-full object-cover object-center"
+          />
+          <div className="relative h-full w-full overflow-hidden">
+            <video
+              ref={heroVideoRef}
+              autoPlay muted loop playsInline poster={campusImg}
+              className="h-full w-full object-cover"
+            >
+              <source src={excella2Video} type="video/mp4" />
+            </video>
+            <div className="absolute inset-0 bg-linear-to-l from-ink/50 via-ink/20 to-transparent" />
+            <div className="absolute bottom-6 right-6 left-6 z-20 md:left-auto md:w-72 rounded-3xl border border-white/15 bg-black/50 p-5 backdrop-blur-md shadow-elegant">
+              <p className="text-[10px] uppercase tracking-[0.25em] text-primary font-semibold">Campus live</p>
+              <p className="mt-3 text-lg font-display leading-tight text-balance">
+                A closer look at the spaces where students learn, build, and lead.
+              </p>
+              <div className="mt-4 flex flex-wrap gap-2 text-xs text-ink-foreground/80">
+                <span className="rounded-full border border-white/15 bg-white/5 px-3 py-1">Labs</span>
+                <span className="rounded-full border border-white/15 bg-white/5 px-3 py-1">Classrooms</span>
+                <span className="rounded-full border border-white/15 bg-white/5 px-3 py-1">Athletics</span>
+              </div>
+              <Link to="/contact" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary/90">
+                Book a tour <Play className="h-4 w-4" />
+              </Link>
+            </div>
+          </div>
+          <div className="absolute inset-0 bg-linear-to-t from-ink via-ink/70 to-ink/30" />
+          <div className="absolute inset-0 gradient-radial opacity-60" />
+        </div>
         <div className="relative container-px mx-auto max-w-7xl pb-20 pt-40 md:pb-28 md:pt-44 w-full">
           <motion.div
             initial={reduce ? false : { opacity: 0, y: 30 }}
@@ -275,11 +320,12 @@ export function Home() {
             </div>
             <div className="space-y-4 pt-10">
               <img src={debateImg} alt="Student leadership" className="rounded-2xl aspect-square object-cover object-top w-full" />
-              <div className="rounded-2xl bg-ink text-ink-foreground p-6 aspect-3/4 flex flex-col justify-between">
-                <Laptop className="h-7 w-7 text-primary" />
-                <div>
-                  <p className="text-3xl font-display">1:1</p>
-                  <p className="text-sm text-ink-foreground/70 mt-1">Chromebook-equipped learning</p>
+              <div className="relative overflow-hidden rounded-2xl aspect-3/4 bg-ink shadow-elegant">
+                <img src={chromebookImg} alt="Chromebook equipped learning" className="h-full w-full object-cover object-center" />
+                <div className="absolute inset-0 bg-linear-to-t from-ink/80 via-ink/20 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-6 text-ink-foreground">
+                  <Laptop className="h-7 w-7 text-primary" />
+                  <p className="text-sm text-ink-foreground/80 mt-1">Chromebook-equipped learning</p>
                 </div>
               </div>
             </div>
@@ -408,13 +454,24 @@ export function Home() {
       {/* CAMPUS */}
       <section className="container-px mx-auto max-w-7xl pb-24">
         <Reveal>
-          <div className="relative overflow-hidden rounded-3xl aspect-21/9">
-            <img src={campusImg} alt="Excella campus" className="h-full w-full object-cover" />
-            <div className="absolute inset-0 bg-linear-to-t from-ink/80 via-ink/20 to-transparent" />
-            <div className="absolute bottom-0 left-0 right-0 p-8 md:p-14 text-ink-foreground">
+          <div className="relative overflow-hidden rounded-3xl aspect-16/5 md:aspect-18/5">
+            <video
+              ref={campusVideoRef}
+              autoPlay
+              muted
+              loop
+              playsInline
+              poster={campus2Img}
+              className="h-full w-full object-cover"
+            >
+              <source src={excella2Video} type="video/mp4" />
+            </video>
+            <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/55 to-black/10" />
+            <div className="absolute inset-0 bg-linear-to-b from-black/35 via-transparent to-black/85" />
+            <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10 text-ink-foreground">
               <p className="text-xs uppercase tracking-[0.25em] text-primary font-semibold">Campus experience</p>
-              <h2 className="mt-3 text-3xl md:text-5xl font-display max-w-2xl">A campus designed for inspiration.</h2>
-              <a href={virtualTourVideo} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex items-center gap-2 rounded-full bg-white text-ink px-5 py-3 text-sm font-semibold hover:opacity-90">
+              <h2 className="mt-2 text-2xl md:text-4xl font-display max-w-2xl">A campus designed for inspiration.</h2>
+              <a href={virtualTourVideo} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center gap-2 rounded-full bg-white text-ink px-5 py-3 text-sm font-semibold hover:opacity-90">
                 Take a visual tour <ArrowRight className="h-4 w-4" />
               </a>
             </div>

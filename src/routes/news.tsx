@@ -28,6 +28,12 @@ export function News() {
         title="What's happening at Excella."
         subtitle="Achievements, announcements, and stories from across our campus."
         image={debate}
+        imageClassName="object-top"
+        variant="banner"
+        meta={[
+          <span key="1" className="rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.2em]">Latest stories</span>,
+          <span key="2" className="rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.2em]">Student wins</span>,
+        ]}
       />
 
       <section className="container-px mx-auto max-w-7xl py-24 grid md:grid-cols-2 lg:grid-cols-3 gap-6">

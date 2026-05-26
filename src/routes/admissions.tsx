@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
 import { ClipboardCheck, FileText, Calendar, GraduationCap, MessageCircle, ChevronDown, Phone } from "lucide-react";
@@ -29,6 +30,16 @@ export function Admissions() {
         title="Join a school where your child is known, challenged, and inspired."
         subtitle="A clear, supportive admissions process — designed with busy families in mind."
         image={campus}
+        variant="split"
+        actions={
+          <Link to="/contact" className="inline-flex items-center gap-2 rounded-full bg-white text-ink px-5 py-3 text-sm font-semibold hover:opacity-90">
+            Start inquiry <ChevronDown className="h-4 w-4 -rotate-90" />
+          </Link>
+        }
+        meta={[
+          <span key="1" className="rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.2em]">Step-by-step</span>,
+          <span key="2" className="rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.2em]">Family support</span>,
+        ]}
       />
 
       {/* STEPS */}

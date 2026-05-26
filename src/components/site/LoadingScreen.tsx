@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-import logo from "@/assets/excella-logo.jpeg";
+import logo from "@/assets/Excella+Am-logo.jpeg";
 
 export function LoadingScreen() {
     return (

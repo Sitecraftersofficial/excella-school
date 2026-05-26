@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, Instagram, Facebook, Youtube } from "lucide-react";
-import logo from "@/assets/excella-logo.jpeg";
+import logo from "@/assets/Excella+Am-logo.jpeg";
 
 export function SiteFooter() {
   return (

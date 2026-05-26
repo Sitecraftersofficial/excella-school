@@ -24,6 +24,12 @@ export function StudentLife() {
         title="Where character meets confidence."
         subtitle="A vibrant community of clubs, competitions, and shared experiences — the moments that shape who our students become."
         image={trophies}
+        variant="split"
+        meta={[
+          <span key="1" className="rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.2em]">Clubs</span>,
+          <span key="2" className="rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.2em]">Competitions</span>,
+          <span key="3" className="rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.2em]">Community</span>,
+        ]}
       />
 
       <section className="container-px mx-auto max-w-7xl py-24 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">

@@ -2,7 +2,7 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import logo from "@/assets/excella-logo.jpeg";
+import logo from "@/assets/Excella+Am-logo.jpeg";
 
 const nav = [
   { to: "/", label: "Home" },

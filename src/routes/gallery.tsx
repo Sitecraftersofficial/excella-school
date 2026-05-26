@@ -1,5 +1,5 @@
 import { motion, useReducedMotion } from "framer-motion";
-import { Play, ArrowRight } from "lucide-react";
+import { ArrowRight, Play } from "lucide-react";
 import { useRef, useState } from "react";
 
 import { PageHero } from "@/components/site/PageHero";
@@ -11,7 +11,7 @@ import trophies from "@/assets/excella-trophies.jpeg";
 import awards from "@/assets/excella-awards.jpeg";
 import debate from "@/assets/excella-debate.jpeg";
 import spotlight from "@/assets/Excella-1.jpeg";
-import logo from "@/assets/excella-logo.jpeg";
+import logo from "@/assets/Excella+Am-logo.jpeg";
 import campusVideo from "@/assets/Excella-2.mp4";
 import eventVideo from "@/assets/Excella-3.mp4";
 import celebrationVideo from "@/assets/Excella-4.mp4";
@@ -33,7 +33,7 @@ const items = [
 const logoStrip = Array.from({ length: 6 }, (_, index) => index);
 const rollingLogos = [...logoStrip, ...logoStrip];
 
-function GalleryVideoCard({ src, poster, caption }: { src: string; poster: string; caption: string }) {
+function GalleryVideoCard({ src, poster, caption }: { src: string; poster?: string; caption: string }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
