@@ -19,6 +19,7 @@ import academicBridgeLogo from "@/assets/academicbridgelogo.png";
 import siteCraftersLogo from "@/assets/siteCraftersLogo.png";
 import satLogo from "@/assets/sat-logo.jpg";
 import universityLogo from "@/assets/university-logopreview.png";
+import plpLogo from "@/assets/plp-logo.png";
 
 const carouselSlides = [
   campusImg,
@@ -31,7 +32,7 @@ const carouselSlides = [
 
 const rollingSlides = [...carouselSlides, ...carouselSlides];
 
-const partnersLogos = [academicBridgeLogo, siteCraftersLogo, satLogo, universityLogo];
+const partnersLogos = [academicBridgeLogo, siteCraftersLogo, satLogo, universityLogo, plpLogo];
 
 function Counter({ end, suffix = "" }: { end: number; suffix?: string }) {
   const [val, setVal] = useState(0);

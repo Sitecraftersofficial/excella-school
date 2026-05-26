@@ -1,5 +1,5 @@
 import { motion, useReducedMotion } from "framer-motion";
-import { Play } from "lucide-react";
+import { Play, ArrowRight } from "lucide-react";
 import { useRef, useState } from "react";
 
 import { PageHero } from "@/components/site/PageHero";
@@ -15,6 +15,7 @@ import logo from "@/assets/excella-logo.jpeg";
 import campusVideo from "@/assets/Excella-2.mp4";
 import eventVideo from "@/assets/Excella-3.mp4";
 import celebrationVideo from "@/assets/Excella-4.mp4";
+import virtualTourVideo from "@/assets/Excella-Virtualtour.mp4";
 
 const items = [
   { kind: "image", src: campus, caption: "The Excella campus" },
@@ -89,12 +90,17 @@ export function Gallery() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <>
+    <div className="overflow-x-hidden">
       <PageHero
         eyebrow="Gallery"
         title="A visual tour of Excella."
         subtitle="Moments from our campus, classrooms, and community."
         image={campus}
+        actions={
+          <a href={virtualTourVideo} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-white text-ink px-5 py-3 text-sm font-semibold hover:opacity-90">
+            Take a visual tour <ArrowRight className="h-4 w-4" />
+          </a>
+        }
       />
 
       <section className="full-bleed bg-ink text-ink-foreground border-y border-border/60 overflow-hidden py-4 md:py-5">
@@ -139,6 +145,6 @@ export function Gallery() {
           ))}
         </div>
       </section>
-    </>
+    </div>
   );
 }

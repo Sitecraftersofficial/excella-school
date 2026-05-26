@@ -5,7 +5,8 @@ export function PageHero({
   title,
   subtitle,
   image,
-}: { eyebrow: string; title: string; subtitle?: string; image?: string }) {
+  actions,
+}: { eyebrow: string; title: string; subtitle?: string; image?: string; actions?: React.ReactNode }) {
 
   return (
     <section className="relative pt-32 md:pt-40 pb-16 md:pb-24 bg-ink text-ink-foreground overflow-hidden">
@@ -27,6 +28,11 @@ export function PageHero({
           <Reveal delay={0.2}>
             <p className="mt-6 max-w-2xl mx-auto text-base md:text-lg text-ink-foreground/75 text-balance">{subtitle}</p>
           </Reveal>
+        )}
+        {actions && (
+          <div className="mt-8">
+            <Reveal delay={0.3}>{actions}</Reveal>
+          </div>
         )}
       </div>
     </section>
