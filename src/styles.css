@@ -188,6 +188,9 @@
   .hero-editorial-image {
     aspect-ratio: 21 / 9;
   }
+  .academics-secondary-image {
+    object-position: center 35%;
+  }
   .reveal-mask {
     -webkit-mask-image: linear-gradient(180deg, black 70%, transparent);
     mask-image: linear-gradient(180deg, black 70%, transparent);

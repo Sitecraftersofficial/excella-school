@@ -33,7 +33,11 @@ export function Academics() {
           <Reveal key={i}>
             <div className={`grid lg:grid-cols-12 gap-10 items-center ${i % 2 ? "lg:[&>*:first-child]:order-2" : ""}`}>
               <div className="lg:col-span-6">
-                <img src={s.img} alt={s.t} className="rounded-3xl aspect-4/3 object-cover w-full shadow-elegant" />
+                <img
+                  src={s.img}
+                  alt={s.t}
+                  className={`rounded-3xl aspect-4/3 object-cover w-full shadow-elegant ${s.tag === "Secondary School" ? "academics-secondary-image" : ""}`}
+                />
               </div>
               <div className="lg:col-span-6">
                 <p className="text-xs uppercase tracking-[0.25em] text-primary font-semibold">{s.tag}</p>
