@@ -5,8 +5,14 @@ import { useRef, useState } from "react";
 import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
 import campus from "@/assets/excella-campus.jpeg";
+import campus1 from "@/assets/Excella-campus1.png";
+import campus2 from "@/assets/Excella-campus2.png";
 import science from "@/assets/excella-science.jpeg";
 import classroom from "@/assets/excella-classroom.jpeg";
+import basketball from "@/assets/Excella-basketball.png";
+import basketball2 from "@/assets/Excella-basketball2.png";
+import musicClass from "@/assets/Excella-musicclass.png";
+import chromebook from "@/assets/chromebook.png";
 import trophies from "@/assets/excella-trophies.jpeg";
 import awards from "@/assets/excella-awards.jpeg";
 import debate from "@/assets/excella-debate.jpeg";
@@ -19,8 +25,14 @@ import virtualTourVideo from "@/assets/Excella-Virtualtour.mp4";
 
 const items = [
   { kind: "image", src: campus, caption: "The Excella campus" },
+  { kind: "image", src: campus1, caption: "Campus view one" },
+  { kind: "image", src: campus2, caption: "Campus view two" },
   { kind: "image", src: science, caption: "Science in action" },
   { kind: "image", src: classroom, caption: "Inside our classrooms" },
+  { kind: "image", src: basketball, caption: "Basketball at Excella" },
+  { kind: "image", src: basketball2, caption: "Basketball training" },
+  { kind: "image", src: musicClass, caption: "Music class moments" },
+  { kind: "image", src: chromebook, caption: "Chromebook-equipped learning" },
   { kind: "image", src: trophies, caption: "Champions of the season" },
   { kind: "image", src: awards, caption: "Recognizing excellence" },
   { kind: "image", src: debate, caption: "Voices that lead" },
