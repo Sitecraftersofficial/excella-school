@@ -448,7 +448,6 @@ export function Home() {
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
       {/* WISDOM LAB */}
       <section className="container-px mx-auto max-w-7xl py-24 md:py-32">
         <div className="grid lg:grid-cols-12 gap-12 items-center">
@@ -475,7 +474,7 @@ export function Home() {
           <Reveal className="lg:col-span-5" delay={0.1}>
             <div className="group relative overflow-hidden rounded-3xl border border-border bg-card p-8 flex flex-col items-center text-center shadow-elegant">
               <div className="relative">
-                <div aria-hidden="true" className="h-40 w-40 rounded-full bg-gradient-to-br from-slate-300 to-slate-500 border border-border shadow-md" />
+                <div aria-hidden="true" className="h-40 w-40 rounded-full bg-linear-to-br from-slate-300 to-slate-500 border border-border shadow-md" />
                 <div className="absolute inset-0 flex items-end justify-center pointer-events-none">
                   <span className="bg-black/80 text-white text-xs font-semibold px-2 py-1 rounded">Image coming soon</span>
                 </div>
@@ -522,40 +521,12 @@ export function Home() {
           </Reveal>
         </div>
       </section>
-      <section className="bg-secondary py-24 md:py-32">
-        <div className="container-px mx-auto max-w-7xl">
-          <Reveal>
-            <p className="text-xs uppercase tracking-[0.25em] text-primary font-semibold text-center">Voices of Excella</p>
-            <h2 className="mt-4 text-4xl md:text-5xl font-display text-balance text-center max-w-3xl mx-auto">
-              Trusted by parents. Loved by students.
-            </h2>
-          </Reveal>
-          <div className="mt-14 grid md:grid-cols-3 gap-5">
-            {[
-              { q: "Excella has given my daughter the confidence and discipline to dream bigger. The teachers truly know each child.", a: "Aline U.", r: "Parent · Primary" },
-              { q: "I love the balance — strong academics, leadership, and friendships that feel like family.", a: "Kevin N.", r: "Student · Secondary" },
-              { q: "The Montessori foundation combined with SAT prep made our decision easy. A truly future-ready school.", a: "Diane M.", r: "Parent · Secondary" },
-            ].map((t, i) => (
-              <Reveal key={i} delay={i * 0.08}>
-                <figure className="h-full rounded-3xl bg-card border border-border p-8 shadow-sm hover:shadow-elegant transition-shadow">
-                  <Quote className="h-7 w-7 text-primary" />
-                  <blockquote className="mt-5 text-lg leading-relaxed font-display text-foreground">"{t.q}"</blockquote>
-                  <figcaption className="mt-6 pt-6 border-t border-border">
-                    <p className="font-semibold">{t.a}</p>
-                    <p className="text-sm text-muted-foreground">{t.r}</p>
-                  </figcaption>
-                </figure>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* PRINCIPAL */}
       <section className="container-px mx-auto max-w-7xl py-24 md:py-32 grid lg:grid-cols-12 gap-12 items-center">
         <Reveal className="lg:col-span-5">
           <div className="relative">
-            <div aria-hidden="true" className="w-full rounded-3xl aspect-4/5 bg-gradient-to-br from-slate-300 to-slate-500 border border-border shadow-md" />
+            <div aria-hidden="true" className="w-full rounded-3xl aspect-4/5 bg-linear-to-br from-slate-300 to-slate-500 border border-border shadow-md" />
             <div className="absolute inset-0 flex items-end justify-start p-4 pointer-events-none">
               <span className="bg-black/80 text-white text-sm font-semibold px-3 py-1 rounded">Director's image coming soon</span>
             </div>
@@ -590,7 +561,7 @@ export function Home() {
       <section className="container-px mx-auto max-w-7xl pb-24">
         <Reveal>
           <div className="relative overflow-hidden rounded-3xl p-8 border border-border bg-card flex flex-col md:flex-row items-center gap-8">
-            <img src={mrsPeaceQuoteImg} alt="Mrs. Peace Uwineza, Deputy Director" className="rounded-3xl w-full md:w-3/5 lg:w-1/2 h-auto object-cover object-center shadow-elegant max-h-[640px]" />
+            <img src={mrsPeaceQuoteImg} alt="Mrs. Peace Uwineza, Deputy Director" className="rounded-3xl w-full md:w-3/5 lg:w-1/2 h-auto object-cover object-center shadow-elegant max-h-160" />
             <div className="md:flex-1">
               <p className="text-xs uppercase tracking-[0.25em] text-primary font-semibold">Deputy Director</p>
               <Quote className="h-8 w-8 text-primary" />

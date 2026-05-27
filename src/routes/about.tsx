@@ -98,7 +98,7 @@ export function About() {
             <Reveal key={i} delay={i * 0.06}>
               <div className="group rounded-3xl overflow-hidden bg-card border border-border">
                 <div className="aspect-4/5 overflow-hidden relative">
-                  <div aria-hidden="true" className="h-full w-full bg-gradient-to-br from-slate-300 to-slate-500" />
+                  <div aria-hidden="true" className="h-full w-full bg-linear-to-br from-slate-300 to-slate-500" />
                   <div className="absolute inset-0 flex items-end justify-center p-3">
                     <span className="bg-black/70 text-white text-xs px-2 py-1 rounded">Image coming soon</span>
                   </div>
