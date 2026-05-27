@@ -1,7 +1,8 @@
-import { Component, useEffect } from "react";
+import { Component, useEffect, useState } from "react";
 import { Link, Navigate, Route, Routes, useLocation } from "react-router-dom";
 
 import logo from "@/assets/Excella+Am-logo.jpeg";
+import { LoadingScreen } from "@/components/site/LoadingScreen";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { About } from "@/routes/about";
@@ -70,6 +71,43 @@ class AppErrorBoundary extends Component<{ children: React.ReactNode }, { hasErr
 }
 
 export default function App() {
+    const [isLoading, setIsLoading] = useState(true);
+    const loadingDelayMs = 2500;
+
+    useEffect(() => {
+        let timeoutId: number | undefined;
+
+        const finishLoading = () => {
+            timeoutId = window.setTimeout(() => {
+                setIsLoading(false);
+            }, loadingDelayMs);
+        };
+
+        if (document.readyState === "complete") {
+            finishLoading();
+        } else {
+            window.addEventListener("load", finishLoading, { once: true });
+
+            return () => {
+                window.removeEventListener("load", finishLoading);
+
+                if (timeoutId) {
+                    window.clearTimeout(timeoutId);
+                }
+            };
+        }
+
+        return () => {
+            if (timeoutId) {
+                window.clearTimeout(timeoutId);
+            }
+        };
+    }, []);
+
+    if (isLoading) {
+        return <LoadingScreen />;
+    }
+
     return (
         <AppErrorBoundary>
             <div className="min-h-dvh bg-background text-foreground">

@@ -12,7 +12,7 @@ export function About() {
       <PageHero
         eyebrow="About Excella"
         title="A school built on excellence, character, and opportunity."
-        subtitle="From our founding, Excella has stood for one promise: every child deserves an education that prepares them for the world — and shapes the world they'll create."
+        subtitle="Excella follows a whole-child philosophy: academic growth, character, social maturity, and personal wellbeing work together so every child can become a balanced adult."
         image={campus2}
         imageFit="contain"
         variant="split"
@@ -27,10 +27,10 @@ export function About() {
           <p className="text-xs uppercase tracking-[0.25em] text-primary font-semibold">Our story</p>
           <h2 className="mt-4 text-4xl md:text-5xl font-display text-balance">Global education with local relevance.</h2>
           <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-            Excella School was founded with a bold idea: that students in Rwanda deserve a school that competes with the very best, anywhere. Today, we are proud to deliver American Montessori and the Rwandan National Curriculum — all under one roof, with SAT as a core part of the secondary Montessori program.
+            Excella School was founded on a simple conviction: children do not come to school empty-headed. They bring knowledge from home, family, and daily life, and education should build on that foundation with care, curiosity, and encouragement. Today we offer American Montessori and the Rwandan National Curriculum under one roof, with SAT preparation included in the secondary Montessori pathway.
           </p>
           <p className="mt-4 text-muted-foreground leading-relaxed">
-            More than programs, we cultivate a culture — one of curiosity, courage, and care. Our students learn to think critically, lead boldly, and serve generously.
+            More than programmes, we cultivate a whole-child culture — one that values academic achievement, pastoral care, life skills, hygiene, safety, responsibility, and balanced growth.
           </p>
         </Reveal>
         <Reveal className="lg:col-span-6" delay={0.1}>
@@ -41,9 +41,9 @@ export function About() {
       <section className="bg-secondary py-24">
         <div className="container-px mx-auto max-w-7xl grid md:grid-cols-3 gap-5">
           {[
-            { icon: Target, t: "Our Mission", d: "To nurture confident, disciplined, future-ready learners through flexible academic pathways and a culture of excellence." },
-            { icon: Eye, t: "Our Vision", d: "To be Rwanda's most trusted premium school — recognized internationally for academic excellence and character." },
-            { icon: Heart, t: "Our Values", d: "Excellence, integrity, respect, curiosity, leadership, and service to community." },
+            { icon: Target, t: "Our Mission", d: "To offer an all-round education in an exciting and conducive atmosphere that builds confidence, nurtures diverse talents, and supports both social and academic development." },
+            { icon: Eye, t: "Our Vision", d: "To nurture creative and independent-minded adults who can productively contribute to Rwanda and to the wider world." },
+            { icon: Heart, t: "Our Values", d: "Balance, encouragement, respect, responsibility, curiosity, integrity, and service to community." },
           ].map((v, i) => (
             <Reveal key={i} delay={i * 0.08}>
               <div className="h-full rounded-3xl bg-card border border-border p-8">
@@ -61,16 +61,16 @@ export function About() {
       <section className="container-px mx-auto max-w-7xl py-24">
         <Reveal>
           <p className="text-xs uppercase tracking-[0.25em] text-primary font-semibold">Why Excella is different</p>
-          <h2 className="mt-4 text-4xl md:text-5xl font-display max-w-3xl text-balance">A complete philosophy of student success.</h2>
+          <h2 className="mt-4 text-4xl md:text-5xl font-display max-w-3xl text-balance">A complete philosophy of balanced education.</h2>
         </Reveal>
         <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {[
-            { icon: Award, t: "Internationally benchmarked", d: "Standards aligned with leading global schools." },
-            { icon: Users, t: "Small, attentive classes", d: "Each child known by name — and by potential." },
-            { icon: BookOpen, t: "Two programs, one school", d: "American Montessori and the Rwandan National Curriculum delivered with excellence." },
-            { icon: Heart, t: "Whole-child approach", d: "Academics, character, arts, and athletics in harmony." },
-            { icon: Target, t: "University & career ready", d: "Counseling and SAT prep from early secondary." },
-            { icon: Eye, t: "Parent partnership", d: "Open communication and transparent reporting." },
+            { icon: Award, t: "Assessment that supports growth", d: "We grade achievement without ranking children against one another, so reporting encourages improvement rather than fear." },
+            { icon: Users, t: "Each child known and valued", d: "Children arrive with different kinds of knowledge, and we build on what they already know with care and encouragement." },
+            { icon: BookOpen, t: "Two programmes, one philosophy", d: "American Montessori and the Rwandan National Curriculum are delivered through the same whole-child vision." },
+            { icon: Heart, t: "Mind, body, and spirit", d: "What affects one affects the other, so academics, wellbeing, and character are developed together." },
+            { icon: Target, t: "Life skills for the real world", d: "Students leave with practical wisdom, confidence, and independent-mindedness — not only exam results." },
+            { icon: Eye, t: "Partnership with parents", d: "We keep communication open so families understand the path and the progress of each child." },
           ].map((f, i) => (
             <Reveal key={i} delay={i * 0.05}>
               <div className="rounded-2xl border border-border p-7 h-full hover:border-primary/40 transition-colors">
@@ -97,8 +97,11 @@ export function About() {
           ].map((p, i) => (
             <Reveal key={i} delay={i * 0.06}>
               <div className="group rounded-3xl overflow-hidden bg-card border border-border">
-                <div className="aspect-4/5 overflow-hidden">
-                  <img src={p.img} alt={p.name} className="h-full w-full object-cover object-center grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
+                <div className="aspect-4/5 overflow-hidden relative">
+                  <div aria-hidden="true" className="h-full w-full bg-gradient-to-br from-slate-300 to-slate-500" />
+                  <div className="absolute inset-0 flex items-end justify-center p-3">
+                    <span className="bg-black/70 text-white text-xs px-2 py-1 rounded">Image coming soon</span>
+                  </div>
                 </div>
                 <div className="p-5">
                   <p className="font-display text-lg">{p.name}</p>

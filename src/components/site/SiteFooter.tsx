@@ -56,7 +56,7 @@ export function SiteFooter() {
       </div>
       <div className="border-t border-white/10">
         <div className="container-px mx-auto max-w-7xl py-6 flex flex-col md:flex-row gap-3 items-center justify-between text-xs text-ink-foreground/55">
-          <p>© {new Date().getFullYear()} Excella School. Member, American Montessori Society. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Excella School. Member of the American Montessori Society. All rights reserved.</p>
           <p>
             Made in Rwanda by{" "}
             <a

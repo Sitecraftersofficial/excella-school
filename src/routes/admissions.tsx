@@ -15,7 +15,7 @@ const steps = [
 
 const faqs = [
   { q: "What ages do you accept?", a: "Excella accepts students from Early Years through Secondary School. Specific entry ages depend on the selected pathway." },
-  { q: "Which curricula do you offer?", a: "American Montessori and the Rwandan National Curriculum. SAT is a core part of the secondary Montessori program." },
+  { q: "Which curricula do you offer?", a: "Excella offers two pathways. American Montessori is child-led, hands-on, and built around independence, creativity, and confidence, with SAT preparation in secondary. The Rwandan National Curriculum follows Rwanda's national standards and grade progression, with the same premium care and outcomes." },
   { q: "How do I learn about tuition?", a: "Tuition varies by program and grade. Please contact admissions for current fees and placement guidance." },
   { q: "What documents do I need to apply?", a: "A completed application form, recent academic reports, copy of birth certificate/passport, and one passport photo." },
   { q: "When can I visit the campus?", a: "Tours are available Monday–Friday by appointment. Use the form below or WhatsApp to schedule." },
@@ -78,6 +78,10 @@ export function Admissions() {
                   <option>Rwandan National Curriculum</option>
                   <option>Not sure — please advise</option>
                 </select>
+                <p className="mt-2 text-xs text-muted-foreground leading-relaxed">
+                  American Montessori is the child-led pathway that develops independence and creativity.
+                  The Rwandan National Curriculum is the national, grade-based pathway aligned to Rwanda's standards.
+                </p>
               </Field>
               <Field label="Message" className="sm:col-span-2">
                 <textarea rows={4} className="input" placeholder="Tell us about your child or your questions..." />

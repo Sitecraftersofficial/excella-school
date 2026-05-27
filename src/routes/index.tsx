@@ -49,6 +49,21 @@ const rollingSlides = [...carouselSlides, ...carouselSlides];
 
 const partnersLogos = [academicBridgeLogo, siteCraftersLogo, satLogo, universityLogo, plpLogo];
 
+const educationalQuotes = [
+  { q: "Education is the kindling of a flame, not the filling of a vessel.", a: "Socrates" },
+  { q: "I cannot teach anybody anything, I can only make them think.", a: "Socrates" },
+  { q: "Educating the mind without educating the heart is no education at all.", a: "Aristotle" },
+  { q: "The purpose of education is to replace an empty mind with an open one.", a: "M. S. Forbes" },
+  { q: "To educate a man in mind, and not in morals, is to educate a menace to society.", a: "President Theodore Roosevelt" },
+  { q: "Education is that which remains when you have forgotten all you have learnt in school.", a: "Albert Einstein" },
+  { q: "Education is not the learning of facts, but rather the training of the mind to think.", a: "Albert Einstein" },
+  { q: "Teaching kids to count is fine. But teaching them what counts is best.", a: "Bob Talbert" },
+  { q: "The whole purpose of education is to turn mirrors into windows.", a: "Sydney Harris" },
+  { q: "Do not educate your child to be rich. Educate him to be happy.", a: "Anonymous" },
+  { q: "If you judge a fish by its ability to climb a tree, it will live its whole life believing it is stupid.", a: "Albert Einstein" },
+  { q: "A good teacher is like a candle - it consumes itself to light the way for others.", a: "Kemal Atatürk" },
+];
+
 function Counter({ end, suffix = "" }: { end: number; suffix?: string }) {
   const [val, setVal] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
@@ -264,16 +279,16 @@ export function Home() {
           </Reveal>
           <Reveal className="lg:col-span-5" delay={0.1}>
             <p className="text-muted-foreground text-lg">
-              We combine global standards with deep local relevance — nurturing confident, disciplined, and future-ready learners ready for university and life.
+              Our whole-child approach recognises that academic growth, social development, and moral formation belong together. We help each child improve, grow, and thrive without reducing progress to rankings alone.
             </p>
           </Reveal>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {[
-            { icon: GraduationCap, t: "Strong Academics", d: "Rigorous, internationally benchmarked curriculum." },
-            { icon: ShieldCheck, t: "Safe Environment", d: "Caring, secure campus and qualified educators." },
-            { icon: Users, t: "Leadership Culture", d: "Clubs, councils, and real responsibility." },
-            { icon: Compass, t: "Future-Ready", d: "Critical thinking, SAT prep, and university guidance." },
+            { icon: GraduationCap, t: "Whole-child development", d: "We nurture academic growth, social maturity, and spiritual balance so children grow into whole adults." },
+            { icon: ShieldCheck, t: "Positive support", d: "A secure, encouraging environment where children are guided with care and can learn confidently." },
+            { icon: Users, t: "Life skills and character", d: "Practical lessons, responsibility, and leadership experiences that prepare students for everyday life." },
+            { icon: Compass, t: "Independent-minded futures", d: "Children learn to think critically, solve problems, and become balanced young adults ready for the world." },
           ].map((f, i) => (
             <Reveal key={i} delay={i * 0.08}>
               <div className="group h-full rounded-2xl border border-border bg-card p-7 hover:border-primary/40 transition-all hover:-translate-y-1 hover:shadow-elegant">
@@ -311,8 +326,8 @@ export function Home() {
           </div>
           <div className="mt-14 grid md:grid-cols-2 gap-5">
             {[
-              { icon: Sparkles, badge: "Foundation", t: "American Montessori", d: "Student-centered learning that builds independence, creativity, and confident academic foundations, with SAT as a core part of secondary Montessori." },
-              { icon: BookOpen, badge: "National", t: "Rwandan Curriculum", d: "Rwanda's national standards delivered with the same premium care and excellence." },
+              { icon: Sparkles, badge: "International", t: "American Montessori", d: "An internationally guided Montessori approach: child-led, hands-on learning that builds independence, creativity and lifelong curiosity. Secondary students receive SAT preparation as part of the pathway." },
+              { icon: BookOpen, badge: "National", t: "Rwandan Curriculum", d: "Rwanda's national curriculum, focused on core competencies and local context — delivered with the same premium teaching, standards, and measurable outcomes." },
             ].map((p, i) => (
               <Reveal key={i} delay={i * 0.1}>
                 <div className="group relative h-full overflow-hidden rounded-3xl border border-white/10 bg-white/3 p-8 hover:bg-white/6 transition-colors">
@@ -335,7 +350,6 @@ export function Home() {
         </div>
       </section>
 
-      {/* MODERN LEARNING */}
       <section className="container-px mx-auto max-w-7xl py-24 md:py-32 grid lg:grid-cols-12 gap-12 items-center">
         <Reveal className="lg:col-span-6 order-2 lg:order-1">
           <p className="text-xs uppercase tracking-[0.25em] text-primary font-semibold">Modern learning experience</p>
@@ -343,10 +357,10 @@ export function Home() {
             Technology that <em className="text-primary not-italic">supports</em> education — not replaces it.
           </h2>
           <p className="mt-5 text-muted-foreground text-lg">
-            From Chromebooks to research-driven projects, our students learn in modern environments where curiosity meets craftsmanship.
+            We recognise that children do not come to school empty-headed. They arrive with knowledge from home, family, and experience — and our teachers build on that foundation with care, curiosity, and encouragement.
           </p>
           <ul className="mt-7 space-y-3">
-            {["Chromebook-equipped classrooms", "Guided online and digital assignments", "Research-based, inquiry learning", "Interactive, collaborative pedagogy"].map((item) => (
+            {["Teaching from the heart, not only from the book", "Children learn through encouragement and praise", "Academic, social, and spiritual growth", "A balanced approach to assessment and progress"].map((item) => (
               <li key={item} className="flex items-center gap-3 text-foreground/85">
                 <span className="h-1.5 w-1.5 rounded-full bg-primary" /> {item}
               </li>
@@ -441,11 +455,11 @@ export function Home() {
           <Reveal className="lg:col-span-7">
             <p className="text-xs uppercase tracking-[0.25em] text-primary font-semibold">Wisdom Lab</p>
             <h2 className="mt-4 text-4xl md:text-5xl font-display text-balance">Life lessons led by our director.</h2>
-            <p className="mt-5 text-lg text-muted-foreground leading-relaxed">Wisdom Lab is a termly lecture series led by the Head of School. Each session presents curated quotes and reflections from influential leaders — Nelson Mandela, Mahatma Gandhi, Albert Einstein, Martin Luther King Jr., Steve Jobs, and others — followed by practical life lessons, personal experiences, and values-based discussion designed to build leadership, discipline, responsibility, perseverance, and personal growth.</p>
+            <p className="mt-5 text-lg text-muted-foreground leading-relaxed">Wisdom Lab translates our whole-child philosophy into practice. Through inspiring quotes, reflection, and discussion, students learn that education is not only about facts — it is about building character, confidence, discipline, and a balanced life.</p>
             <ul className="mt-6 grid grid-cols-2 gap-3">
               {[
                 "Leadership",
-                "Discipline",
+                "Balance",
                 "Responsibility",
                 "Perseverance",
                 "Integrity",
@@ -456,7 +470,7 @@ export function Home() {
                 </li>
               ))}
             </ul>
-            <p className="mt-6 text-muted-foreground">At the end of every term students sit a Life Skills exam which reflects lessons, ideas, and reflections from Wisdom Lab sessions. The School Director is the primary speaker and mentor for these lessons, and students actively contribute to the discussions.</p>
+            <p className="mt-6 text-muted-foreground">At the end of every term students sit a Life Skills exam that reflects the lessons, ideas, and reflections from Wisdom Lab sessions. The aim is not to compare children harshly, but to help each learner grow into a thoughtful and confident person.</p>
           </Reveal>
           <Reveal className="lg:col-span-5" delay={0.1}>
             <div className="group relative overflow-hidden rounded-3xl border border-border bg-card p-8 flex flex-col items-center text-center shadow-elegant">
@@ -468,7 +482,42 @@ export function Home() {
               </div>
               <p className="mt-5 font-display text-xl">Mr. Theo</p>
               <p className="text-sm text-muted-foreground">School Director</p>
-              <blockquote className="mt-4 text-sm italic text-muted-foreground">“We don't just teach subjects. We grow people.”</blockquote>
+              <blockquote className="mt-4 text-sm italic text-muted-foreground">“We do not just fill minds with facts. We help children grow into whole people.”</blockquote>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+      <section className="container-px mx-auto max-w-7xl pb-24 md:pb-32">
+        <div className="grid lg:grid-cols-12 gap-12 items-start">
+          <Reveal className="lg:col-span-7">
+            <p className="text-xs uppercase tracking-[0.25em] text-primary font-semibold">Life skills at Excella School</p>
+            <h2 className="mt-4 text-4xl md:text-5xl font-display text-balance">A glimpse of our pursuit of balanced education.</h2>
+            <p className="mt-5 text-lg text-muted-foreground leading-relaxed">
+              In keeping with our vision of holistic or whole-child development, students are exposed to a wide range of experiences beyond the traditional academic subjects. We equip them with practical life skills so they can confidently face the world outside school.
+            </p>
+            <div className="mt-8 rounded-3xl border border-border bg-card p-7">
+              <blockquote className="text-lg md:text-xl font-display leading-relaxed text-foreground">
+                “Children learn what they live.”
+              </blockquote>
+              <p className="mt-3 text-sm text-muted-foreground">Dorothy Law Nolte</p>
+            </div>
+          </Reveal>
+          <Reveal className="lg:col-span-5" delay={0.1}>
+            <div className="rounded-3xl border border-border bg-secondary p-8">
+              <h3 className="text-2xl font-display">What life skills look like at Excella</h3>
+              <ul className="mt-6 space-y-4">
+                {[
+                  "Encouraging students to live with confidence, fairness, acceptance, and friendship.",
+                  "Teaching through praise, encouragement, and positive energy instead of intimidation.",
+                  "Helping children grow socially, academically, and spiritually as part of one balanced journey.",
+                  "Showing that grades are only one part of progress, while character, care, and discipline matter too.",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-muted-foreground leading-relaxed">
+                    <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-primary" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </Reveal>
         </div>
@@ -552,6 +601,57 @@ export function Home() {
             </div>
           </div>
         </Reveal>
+      </section>
+
+      {/* EDUCATIONAL QUOTES */}
+      <section className="container-px mx-auto max-w-7xl pb-24">
+        <Reveal>
+          <p className="text-xs uppercase tracking-[0.25em] text-primary font-semibold">Educational quotes</p>
+          <h2 className="mt-4 text-4xl md:text-5xl font-display text-balance max-w-3xl">Quotes that inspire Excella School's holistic education.</h2>
+          <p className="mt-5 text-lg text-muted-foreground leading-relaxed max-w-3xl">These are the ideas that shape our whole-child thinking, our mission, and our daily teaching practice.</p>
+        </Reveal>
+        <div className="mt-12 grid md:grid-cols-2 xl:grid-cols-3 gap-5">
+          {educationalQuotes.map((quote, i) => (
+            <Reveal key={i} delay={(i % 3) * 0.05}>
+              <figure className="h-full rounded-3xl border border-border bg-card p-7 shadow-sm hover:shadow-elegant transition-shadow">
+                <Quote className="h-7 w-7 text-primary" />
+                <blockquote className="mt-5 text-lg leading-relaxed font-display text-foreground">“{quote.q}”</blockquote>
+                <figcaption className="mt-6 pt-5 border-t border-border">
+                  <p className="font-semibold text-foreground">{quote.a}</p>
+                </figcaption>
+              </figure>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      <section className="bg-secondary py-24 md:py-32">
+        <div className="container-px mx-auto max-w-7xl">
+          <Reveal>
+            <p className="text-xs uppercase tracking-[0.25em] text-primary font-semibold text-center">Voices of Excella</p>
+            <h2 className="mt-4 text-4xl md:text-5xl font-display text-balance text-center max-w-3xl mx-auto">
+              Trusted by parents. Loved by students.
+            </h2>
+          </Reveal>
+          <div className="mt-14 grid md:grid-cols-3 gap-5">
+            {[
+              { q: "Excella has given my daughter the confidence and discipline to dream bigger. The teachers truly know each child.", a: "Aline U.", r: "Parent · Primary" },
+              { q: "I love the balance — strong academics, leadership, and friendships that feel like family.", a: "Kevin N.", r: "Student · Secondary" },
+              { q: "The Montessori foundation combined with SAT prep made our decision easy. A truly future-ready school.", a: "Diane M.", r: "Parent · Secondary" },
+            ].map((t, i) => (
+              <Reveal key={i} delay={i * 0.08}>
+                <figure className="h-full rounded-3xl bg-card border border-border p-8 shadow-sm hover:shadow-elegant transition-shadow">
+                  <Quote className="h-7 w-7 text-primary" />
+                  <blockquote className="mt-5 text-lg leading-relaxed font-display text-foreground">"{t.q}"</blockquote>
+                  <figcaption className="mt-6 pt-6 border-t border-border">
+                    <p className="font-semibold">{t.a}</p>
+                    <p className="text-sm text-muted-foreground">{t.r}</p>
+                  </figcaption>
+                </figure>
+              </Reveal>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* NEWS */}

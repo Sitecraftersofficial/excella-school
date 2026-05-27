@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { Reveal } from "./Reveal";
+import logo from "@/assets/Excella-logo.png";
 
 export function CTASection() {
   return (
@@ -10,7 +11,15 @@ export function CTASection() {
         <div className="absolute -bottom-32 -left-32 h-96 w-96 rounded-full bg-primary/10 blur-3xl" />
         <div className="relative max-w-3xl">
           <Reveal>
-            <p className="text-xs uppercase tracking-[0.25em] text-primary font-semibold">Admissions Open</p>
+            <div className="flex items-center gap-4">
+              <div className="shrink-0 rounded-2xl border border-white/15 bg-white/5 p-3 shadow-sm">
+                <img src={logo} alt="Excella School" className="h-12 w-12 object-contain" />
+              </div>
+              <div>
+                <p className="text-xs uppercase tracking-[0.25em] text-primary font-semibold">Admissions Open</p>
+                <p className="mt-1 text-sm text-ink-foreground/70">Excella School</p>
+              </div>
+            </div>
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="mt-4 text-4xl md:text-6xl font-display text-balance">

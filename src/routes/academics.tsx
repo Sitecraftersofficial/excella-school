@@ -71,6 +71,40 @@ export function Academics() {
         </div>
       </section>
 
+      <section className="container-px mx-auto max-w-7xl py-12">
+        <Reveal>
+          <p className="text-xs uppercase tracking-[0.25em] text-primary font-semibold">Program comparison</p>
+          <h2 className="mt-4 text-3xl md:text-4xl font-display">How the two pathways compare</h2>
+          <p className="mt-4 text-lg text-muted-foreground leading-relaxed">Both pathways deliver high-quality teaching and caring support, but they differ in approach, assessment, and progression. Below is a concise explanation to help families choose the right fit for their child.</p>
+        </Reveal>
+
+        <div className="mt-8 grid md:grid-cols-2 gap-6">
+          <Reveal>
+            <div className="rounded-3xl border border-border p-6 bg-card h-full">
+              <h3 className="text-xl font-display">American Montessori</h3>
+              <p className="mt-3 text-muted-foreground leading-relaxed">An internationally guided Montessori approach where learning is child-led and hands-on. Classrooms often use mixed ages, materials for concrete learning, and an emphasis on independence, curiosity and self-paced mastery. Assessment is primarily formative and skills-based. At secondary level, Montessori students receive SAT preparation to support international university pathways.</p>
+            </div>
+          </Reveal>
+          <Reveal>
+            <div className="rounded-3xl border border-border p-6 bg-card h-full">
+              <h3 className="text-xl font-display">Rwandan National Curriculum</h3>
+              <p className="mt-3 text-muted-foreground leading-relaxed">A standards-aligned national programme with grade-by-grade progression and national examinations. It emphasises core competencies, subject knowledge and local context. This pathway is ideal for families who prioritise national certification and continuity with Rwanda’s educational system while benefiting from Excella’s premium teaching and outcomes.</p>
+            </div>
+          </Reveal>
+        </div>
+
+        <div className="mt-8">
+          <h4 className="text-lg font-semibold">Key differences at a glance</h4>
+          <ul className="mt-3 grid sm:grid-cols-2 gap-3 text-muted-foreground">
+            <li><strong>Approach:</strong> Montessori — child-led and hands-on; Rwandan — standards-based and sequential.</li>
+            <li><strong>Assessment:</strong> Montessori — formative, mastery-focused; Rwandan — grade-level tests and national exams.</li>
+            <li><strong>Progression:</strong> Montessori — mixed-age, mastery-based; Rwandan — grade-by-grade progression.</li>
+            <li><strong>University pathway:</strong> Montessori — international focus with SAT support; Rwandan — national certification and strong local outcomes.</li>
+            <li><strong>Best fit:</strong> Montessori — families seeking self-directed, international-style learning; Rwandan — families preferring national alignment and local certification.</li>
+          </ul>
+        </div>
+      </section>
+
       {/* LANGUAGES / SPORTS / CRITICAL */}
       <section className="container-px mx-auto max-w-7xl py-24 grid md:grid-cols-3 gap-5">
         {[
