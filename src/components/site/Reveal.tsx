@@ -3,6 +3,21 @@ import type { ReactNode } from "react";
 
 export function Reveal({ children, delay = 0, y = 24, className }: { children: ReactNode; delay?: number; y?: number; className?: string }) {
   const reduce = useReducedMotion();
+  const canUseInView = typeof IntersectionObserver !== "undefined";
+
+  if (!canUseInView) {
+    return (
+      <motion.div
+        initial={false}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.01, delay: 0 }}
+        className={className}
+      >
+        {children}
+      </motion.div>
+    );
+  }
+
   return (
     <motion.div
       initial={reduce ? false : { opacity: 0, y }}

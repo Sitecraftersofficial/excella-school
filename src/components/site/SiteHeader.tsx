@@ -23,6 +23,7 @@ export function SiteHeader() {
   const location = useLocation();
   const desktopLinkTone = scrolled ? "text-foreground/80 hover:text-foreground" : "text-white/90 hover:text-white";
   const mobileLinkTone = scrolled ? "text-foreground/80 hover:bg-accent" : "text-ink-foreground/90 hover:bg-white/10";
+  const mobileOpenLinkTone = "text-white/95 hover:bg-white/10";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -32,6 +33,17 @@ export function SiteHeader() {
   }, []);
 
   useEffect(() => { setOpen(false); }, [location.pathname]);
+
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
 
   useEffect(() => {
     const timeoutId = window.setTimeout(() => setShowMainHeader(true), reduceMotion ? 160 : 1200);
@@ -128,7 +140,7 @@ export function SiteHeader() {
             </motion.button>
           </div>
           {open && (
-            <div className="lg:hidden glass border-t border-border/60">
+            <div className="lg:hidden bg-ink text-white border-t border-border/60">
               <nav className="container-px mx-auto max-w-7xl py-4 flex flex-col gap-1">
                 {nav.map((item) => (
                   <NavLink
@@ -136,8 +148,7 @@ export function SiteHeader() {
                     to={item.to}
                     end={item.to === "/"}
                     className={({ isActive }) =>
-                      `px-3 py-3 rounded-md text-sm font-medium ${isActive ? "text-primary" : mobileLinkTone
-                      }`
+                      `px-3 py-3 rounded-md text-sm font-medium ${isActive ? "text-primary" : mobileOpenLinkTone}`
                     }
                   >
                     {item.label}
@@ -145,7 +156,7 @@ export function SiteHeader() {
                 ))}
                 <Link
                   to="/admissions"
-                  className="mt-2 inline-flex items-center justify-center rounded-full bg-ink text-ink-foreground px-5 py-3 text-sm font-semibold"
+                  className="mt-2 inline-flex items-center justify-center rounded-full bg-white text-ink px-5 py-3 text-sm font-semibold"
                 >
                   Apply Now
                 </Link>

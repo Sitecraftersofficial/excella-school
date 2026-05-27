@@ -21,7 +21,8 @@ import chromebookImg from "@/assets/chromebook.png";
 import excella1Img from "@/assets/Excella-1.jpeg";
 import logoImg from "@/assets/Excella+Am-logo.jpeg";
 import excella2Video from "@/assets/Excella-2.mp4";
-import virtualTourVideo from "@/assets/Excella-Virtualtour.mp4";
+import virtualTourVideo from "@/assets/Excella-Virtualtour+music.mp4";
+import mrsPeaceQuoteImg from "@/assets/mrsPeace+quote.jpeg";
 import academicBridgeLogo from "@/assets/academicbridgelogo.png";
 import siteCraftersLogo from "@/assets/siteCraftersLogo.png";
 import satLogo from "@/assets/sat-logo.jpg";
@@ -54,6 +55,11 @@ function Counter({ end, suffix = "" }: { end: number; suffix?: string }) {
   const started = useRef(false);
 
   useEffect(() => {
+    if (typeof IntersectionObserver === "undefined") {
+      setVal(end);
+      return;
+    }
+
     const obs = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting && !started.current) {
         started.current = true;
@@ -108,17 +114,12 @@ function HomeCarousel() {
 export function Home() {
   const reduce = useReducedMotion();
   const heroVideoRef = useRef<HTMLVideoElement>(null);
-  const campusVideoRef = useRef<HTMLVideoElement>(null);
+  const tourVideoRef = useRef<HTMLVideoElement>(null);
+  const [tourPlaying, setTourPlaying] = useState(false);
 
   useEffect(() => {
     if (heroVideoRef.current) {
       heroVideoRef.current.playbackRate = 0.5;
-    }
-  }, []);
-
-  useEffect(() => {
-    if (campusVideoRef.current) {
-      campusVideoRef.current.playbackRate = 0.5;
     }
   }, []);
 
@@ -141,20 +142,6 @@ export function Home() {
               <source src={excella2Video} type="video/mp4" />
             </video>
             <div className="absolute inset-0 bg-linear-to-l from-ink/50 via-ink/20 to-transparent" />
-            <div className="absolute bottom-6 right-6 left-6 z-20 md:left-auto md:w-72 rounded-3xl border border-white/15 bg-black/50 p-5 backdrop-blur-md shadow-elegant">
-              <p className="text-[10px] uppercase tracking-[0.25em] text-primary font-semibold">Campus live</p>
-              <p className="mt-3 text-lg font-display leading-tight text-balance">
-                A closer look at the spaces where students learn, build, and lead.
-              </p>
-              <div className="mt-4 flex flex-wrap gap-2 text-xs text-ink-foreground/80">
-                <span className="rounded-full border border-white/15 bg-white/5 px-3 py-1">Labs</span>
-                <span className="rounded-full border border-white/15 bg-white/5 px-3 py-1">Classrooms</span>
-                <span className="rounded-full border border-white/15 bg-white/5 px-3 py-1">Athletics</span>
-              </div>
-              <Link to="/contact" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary/90">
-                Book a tour <Play className="h-4 w-4" />
-              </Link>
-            </div>
           </div>
           <div className="absolute inset-0 bg-linear-to-t from-ink via-ink/70 to-ink/30" />
           <div className="absolute inset-0 gradient-radial opacity-60" />
@@ -187,6 +174,63 @@ export function Home() {
               </Link>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* CAMPUS EXPERIENCE */}
+      <section className="container-px mx-auto max-w-7xl pb-6 md:pb-10 -mt-6 md:-mt-10 relative z-10">
+        <div className="grid gap-6 lg:grid-cols-[1.08fr_0.92fr] items-stretch">
+          <Reveal className="rounded-3xl border border-border bg-card p-8 md:p-10 shadow-elegant">
+            <p className="text-xs uppercase tracking-[0.25em] text-primary font-semibold">Campus experience</p>
+            <h2 className="mt-4 text-3xl md:text-5xl font-display text-balance max-w-2xl">
+              Discover the campus experience from the start.
+            </h2>
+            <p className="mt-5 text-muted-foreground text-base md:text-lg leading-relaxed max-w-2xl">
+              This virtual tour offers a general look at the campus, including athletics, the community environment, and the exterior setting.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link to="/contact" className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-6 py-3.5 font-semibold hover:opacity-90 transition shadow-glow">
+                Book a tour <ArrowRight className="h-4 w-4" />
+              </Link>
+              <Link to="/gallery" className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3.5 font-semibold hover:bg-accent transition">
+                View more photos <Play className="h-4 w-4" />
+              </Link>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.1} className="relative overflow-hidden rounded-3xl border border-border bg-black shadow-elegant min-h-72 sm:min-h-88 lg:min-h-104">
+            {!tourPlaying && (
+              <button
+                type="button"
+                onClick={async () => {
+                  try {
+                    await tourVideoRef.current?.play();
+                  } catch {
+                    setTourPlaying(false);
+                  }
+                }}
+                className="absolute inset-0 z-10 flex items-center justify-center bg-black/35 text-white transition hover:bg-black/45"
+                aria-label="Play virtual tour video"
+              >
+                <span className="flex h-20 w-20 items-center justify-center rounded-full border border-white/25 bg-white/15 backdrop-blur-sm shadow-2xl transition-transform duration-300 hover:scale-105">
+                  <Play className="h-8 w-8 fill-current ml-1" />
+                </span>
+              </button>
+            )}
+            <video
+              ref={tourVideoRef}
+              controls={tourPlaying}
+              playsInline
+              preload="metadata"
+              poster={campus2Img}
+              className="h-full w-full object-cover"
+              onPlay={() => setTourPlaying(true)}
+              onPause={() => setTourPlaying(false)}
+              onEnded={() => setTourPlaying(false)}
+            >
+              <source src={virtualTourVideo} type="video/mp4" />
+            </video>
+          </Reveal>
         </div>
       </section>
 
@@ -374,17 +418,15 @@ export function Home() {
             <div className="group relative overflow-hidden rounded-3xl aspect-square">
               <img src={classroomImg} alt="Classroom" className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105" />
               <div className="absolute inset-0 bg-linear-to-t from-ink/90 to-transparent" />
-              <div className="absolute bottom-0 p-6 text-ink-foreground">
-                <h3 className="text-xl">House Spirit</h3>
-              </div>
             </div>
           </Reveal>
           <Reveal className="md:col-span-4" delay={0.2}>
             <div className="group relative overflow-hidden rounded-3xl aspect-square md:aspect-2/1">
-              <img src={debateImg} alt="Debate" className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105" />
+              <img src={basketballImg} alt="House spirit" className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105" />
               <div className="absolute inset-0 bg-linear-to-t from-ink via-ink/30 to-transparent" />
               <div className="absolute bottom-0 p-8 text-ink-foreground">
                 <h3 className="text-2xl">Voices that lead</h3>
+                <p className="mt-1 text-sm text-ink-foreground/80">Cheering, competing, and showing pride for every house.</p>
                 <p className="text-sm text-ink-foreground/80 mt-1">Debate, MUN, public speaking and student-led initiatives.</p>
               </div>
             </div>
@@ -418,7 +460,12 @@ export function Home() {
           </Reveal>
           <Reveal className="lg:col-span-5" delay={0.1}>
             <div className="group relative overflow-hidden rounded-3xl border border-border bg-card p-8 flex flex-col items-center text-center shadow-elegant">
-              <img src={excella1Img} alt="School Director" className="h-40 w-40 rounded-full object-cover shadow-md" />
+              <div className="relative">
+                <div aria-hidden="true" className="h-40 w-40 rounded-full bg-gradient-to-br from-slate-300 to-slate-500 border border-border shadow-md" />
+                <div className="absolute inset-0 flex items-end justify-center pointer-events-none">
+                  <span className="bg-black/80 text-white text-xs font-semibold px-2 py-1 rounded">Image coming soon</span>
+                </div>
+              </div>
               <p className="mt-5 font-display text-xl">Mr. Theo</p>
               <p className="text-sm text-muted-foreground">School Director</p>
               <blockquote className="mt-4 text-sm italic text-muted-foreground">“We don't just teach subjects. We grow people.”</blockquote>
@@ -459,54 +506,49 @@ export function Home() {
       <section className="container-px mx-auto max-w-7xl py-24 md:py-32 grid lg:grid-cols-12 gap-12 items-center">
         <Reveal className="lg:col-span-5">
           <div className="relative">
-            <img src={awardsImg} alt="School leadership" className="rounded-3xl aspect-4/5 object-cover object-center w-full shadow-elegant" />
-            <div className="absolute -bottom-6 -right-6 bg-primary text-primary-foreground p-6 rounded-2xl max-w-50 shadow-glow hidden md:block">
-              <Quote className="h-5 w-5" />
-              <p className="mt-2 text-sm font-semibold leading-snug">Every child has the right to soar.</p>
+            <div aria-hidden="true" className="w-full rounded-3xl aspect-4/5 bg-gradient-to-br from-slate-300 to-slate-500 border border-border shadow-md" />
+            <div className="absolute inset-0 flex items-end justify-start p-4 pointer-events-none">
+              <span className="bg-black/80 text-white text-sm font-semibold px-3 py-1 rounded">Director's image coming soon</span>
             </div>
           </div>
         </Reveal>
         <Reveal className="lg:col-span-7" delay={0.1}>
-          <p className="text-xs uppercase tracking-[0.25em] text-primary font-semibold">Principal's message</p>
+          <p className="text-xs uppercase tracking-[0.25em] text-primary font-semibold">Director's message</p>
           <h2 className="mt-4 text-4xl md:text-5xl font-display text-balance">
-            "We don't just teach subjects. We grow people."
+            An overview of the educational thinking and practice at Excella School.
           </h2>
-          <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-            At Excella, we believe true education combines mastery with meaning. Our students leave us prepared not only for university — but for life. With strong values, sharp minds, and the confidence to lead, they go on to shape Rwanda and the world.
+          <blockquote className="mt-6 border-l-4 border-primary pl-5 text-lg md:text-xl font-display leading-relaxed text-balance">
+            "High quality education is priceless and timeless: fame and beauty fade away, riches quickly vanish, but, here is the unchanging truth - no one whomsoever can take away your education from you!!"
+          </blockquote>
+          <p className="mt-5 text-muted-foreground leading-relaxed">
+            We shall endeavour to highlight our delivery in our educational philosophy, our vision and mission, our preferred teaching-learning methodologies, and our assessment and evaluation methodologies.
           </p>
           <p className="mt-4 text-muted-foreground leading-relaxed">
-            We invite you to visit our campus and feel for yourself the warmth, discipline, and ambition that define the Excella experience.
+            We draw our inspiration from great thinkers such as Dr. Albert Einstein and Dr. Maria Montessori. Their wisdom reminds us to teach Excella children how to be creative learners. Likewise, the courage of Nelson Mandela, Dr. Rev. Martin Luther King Jr., and Mahatma Gandhi reminds us to nurture independent-minded learners.
+          </p>
+          <p className="mt-4 text-muted-foreground leading-relaxed">
+            Creativity and independent-mindedness are at the very heart of our education vision. If you have any questions or need clarification, please contact me on 0788306086.
           </p>
           <div className="mt-8">
-            <p className="font-display text-xl">Mrs. M. Uwase</p>
-            <p className="text-sm text-muted-foreground">Head of School</p>
+            <p className="font-display text-xl">Théo Turatsinze</p>
+            <p className="text-sm text-muted-foreground">Mr. Theo, Director, Excella School</p>
+            <p className="text-sm text-muted-foreground">M.Ed, Univ. of Bath, U.K.</p>
           </div>
         </Reveal>
       </section>
 
-      {/* CAMPUS */}
+      {/* DEPUTY DIRECTOR */}
       <section className="container-px mx-auto max-w-7xl pb-24">
         <Reveal>
-          <div className="relative overflow-hidden rounded-3xl aspect-16/5 md:aspect-18/5">
-            <video
-              ref={campusVideoRef}
-              autoPlay
-              muted
-              loop
-              playsInline
-              poster={campus2Img}
-              className="h-full w-full object-cover"
-            >
-              <source src={excella2Video} type="video/mp4" />
-            </video>
-            <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/55 to-black/10" />
-            <div className="absolute inset-0 bg-linear-to-b from-black/35 via-transparent to-black/85" />
-            <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10 text-ink-foreground">
-              <p className="text-xs uppercase tracking-[0.25em] text-primary font-semibold">Campus experience</p>
-              <h2 className="mt-2 text-2xl md:text-4xl font-display max-w-2xl">A campus designed for inspiration.</h2>
-              <a href={virtualTourVideo} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center gap-2 rounded-full bg-white text-ink px-5 py-3 text-sm font-semibold hover:opacity-90">
-                Take a visual tour <ArrowRight className="h-4 w-4" />
-              </a>
+          <div className="relative overflow-hidden rounded-3xl p-8 border border-border bg-card flex flex-col md:flex-row items-center gap-8">
+            <img src={mrsPeaceQuoteImg} alt="Mrs. Peace Uwineza, Deputy Director" className="rounded-3xl w-full md:w-3/5 lg:w-1/2 h-auto object-cover object-center shadow-elegant max-h-[640px]" />
+            <div className="md:flex-1">
+              <p className="text-xs uppercase tracking-[0.25em] text-primary font-semibold">Deputy Director</p>
+              <Quote className="h-8 w-8 text-primary" />
+              <blockquote className="mt-5 text-xl leading-relaxed font-display text-foreground">“Experience a family-driven, friendly, and intimate
+                atmosphere at Excella School, where children are not just
+                educated but also nurtured to be happy and fulfilled.”</blockquote>
+              <p className="mt-4 font-semibold text-foreground">Mrs Peace Uwineza<br />Deputy Director, Excella School</p>
             </div>
           </div>
         </Reveal>

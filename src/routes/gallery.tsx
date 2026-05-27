@@ -21,7 +21,7 @@ import logo from "@/assets/Excella+Am-logo.jpeg";
 import campusVideo from "@/assets/Excella-2.mp4";
 import eventVideo from "@/assets/Excella-3.mp4";
 import celebrationVideo from "@/assets/Excella-4.mp4";
-import virtualTourVideo from "@/assets/Excella-Virtualtour.mp4";
+import virtualTourVideo from "@/assets/Excella-Virtualtour+music.mp4";
 
 const items = [
   { kind: "image", src: campus, caption: "The Excella campus" },

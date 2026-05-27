@@ -1,9 +1,8 @@
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { useEffect, useState } from "react";
-import { Navigate, Route, Routes, useLocation } from "react-router-dom";
+import { Component, useEffect } from "react";
+import { Link, Navigate, Route, Routes, useLocation } from "react-router-dom";
 
+import logo from "@/assets/Excella+Am-logo.jpeg";
 import { SiteFooter } from "@/components/site/SiteFooter";
-import { LoadingScreen } from "@/components/site/LoadingScreen";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { About } from "@/routes/about";
 import { Academics } from "@/routes/academics";
@@ -24,66 +23,73 @@ function ScrollToTop() {
     return null;
 }
 
-export default function App() {
-    const reduceMotion = useReducedMotion();
-    const [isLoading, setIsLoading] = useState(true);
+class AppErrorBoundary extends Component<{ children: React.ReactNode }, { hasError: boolean }> {
+    state = { hasError: false };
 
-    useEffect(() => {
-        const startedAt = performance.now();
-        const minVisibleMs = reduceMotion ? 300 : 2200;
-        let completionTimer: number | undefined;
+    static getDerivedStateFromError() {
+        return { hasError: true };
+    }
 
-        const completeWithMinimum = () => {
-            const elapsed = performance.now() - startedAt;
-            const remaining = Math.max(0, minVisibleMs - elapsed);
-            completionTimer = window.setTimeout(() => setIsLoading(false), remaining);
-        };
+    componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
+        console.error(error, errorInfo);
+    }
 
-        if (document.readyState === "complete") {
-            completeWithMinimum();
-        } else {
-            window.addEventListener("load", completeWithMinimum, { once: true });
+    render() {
+        if (this.state.hasError) {
+            return (
+                <div className="min-h-dvh grid place-items-center bg-background text-foreground px-6 text-center">
+                    <div className="max-w-lg space-y-5 flex flex-col items-center">
+                        <img src={logo} alt="Excella School" className="h-14 w-auto rounded-sm shadow-elegant" />
+                        <p className="text-xs uppercase tracking-[0.25em] text-primary font-semibold">Excella School</p>
+                        <h1 className="text-3xl md:text-5xl font-display">This page could not be loaded.</h1>
+                        <p className="text-muted-foreground">
+                            Please refresh the page. If the issue persists, contact the school admin and we will help you right away.
+                        </p>
+                        <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
+                            <button
+                                type="button"
+                                onClick={() => window.location.reload()}
+                                className="inline-flex items-center justify-center rounded-full border border-border px-5 py-3 text-sm font-semibold hover:bg-accent transition"
+                            >
+                                Refresh page
+                            </button>
+                            <a
+                                href="mailto:admissions@excella.school"
+                                className="inline-flex items-center justify-center rounded-full bg-primary text-primary-foreground px-5 py-3 text-sm font-semibold hover:opacity-90 transition"
+                            >
+                                Email admin
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            );
         }
 
-        const safetyTimer = window.setTimeout(completeWithMinimum, 4500);
+        return this.props.children;
+    }
+}
 
-        return () => {
-            window.clearTimeout(completionTimer);
-            window.clearTimeout(safetyTimer);
-            window.removeEventListener("load", completeWithMinimum);
-        };
-    }, []);
-
+export default function App() {
     return (
-        <AnimatePresence mode="wait">
-            {isLoading ? (
-                <LoadingScreen key="loading" />
-            ) : (
-                <motion.div
-                    key="app"
-                    className="min-h-dvh bg-background text-foreground"
-                    initial={reduceMotion ? false : { opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.35 }}
-                >
-                    <SiteHeader />
-                    <ScrollToTop />
-                    <main>
-                        <Routes>
-                            <Route path="/" element={<Home />} />
-                            <Route path="/about" element={<About />} />
-                            <Route path="/academics" element={<Academics />} />
-                            <Route path="/admissions" element={<Admissions />} />
-                            <Route path="/student-life" element={<StudentLife />} />
-                            <Route path="/news" element={<News />} />
-                            <Route path="/gallery" element={<Gallery />} />
-                            <Route path="/contact" element={<Contact />} />
-                            <Route path="*" element={<Navigate to="/" replace />} />
-                        </Routes>
-                    </main>
-                    <SiteFooter />
-                </motion.div>
-            )}
-        </AnimatePresence>
+        <AppErrorBoundary>
+            <div className="min-h-dvh bg-background text-foreground">
+                <SiteHeader />
+                <ScrollToTop />
+                <main>
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/about" element={<About />} />
+                        <Route path="/academics" element={<Academics />} />
+                        <Route path="/admissions" element={<Admissions />} />
+                        <Route path="/student-life" element={<StudentLife />} />
+                        <Route path="/news" element={<News />} />
+                        <Route path="/gallery" element={<Gallery />} />
+                        <Route path="/contact" element={<Contact />} />
+                        <Route path="*" element={<Navigate to="/" replace />} />
+                    </Routes>
+                </main>
+                <SiteFooter />
+            </div>
+        </AppErrorBoundary>
     );
 }
