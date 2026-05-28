@@ -15,18 +15,16 @@ import trophiesImg from "@/assets/excella-trophies.jpeg";
 import awardsImg from "@/assets/excella-awards.jpeg";
 import debateImg from "@/assets/excella-debate.jpeg";
 import basketballImg from "@/assets/Excella-basketball.png";
-import basketball2Img from "@/assets/Excella-basketball2.png";
 import musicClassImg from "@/assets/Excella-musicclass.png";
 import chromebookImg from "@/assets/chromebook.png";
 import excella1Img from "@/assets/Excella-1.jpeg";
 import logoImg from "@/assets/Excella+Am-logo.jpeg";
 import excella2Video from "@/assets/Excella-2.mp4";
-import virtualTourVideo from "@/assets/Excella-Virtualtour+music.mp4";
+import virtualTourVideo from "@/assets/Excella-Virtualtour.mp4";
 import mrsPeaceQuoteImg from "@/assets/mrsPeace+quote.jpeg";
 import academicBridgeLogo from "@/assets/academicbridgelogo.png";
 import siteCraftersLogo from "@/assets/siteCraftersLogo.png";
 import satLogo from "@/assets/sat-logo.jpg";
-import universityLogo from "@/assets/university-logopreview.png";
 import plpLogo from "@/assets/plp-logo.png";
 
 const carouselSlides = [
@@ -39,7 +37,6 @@ const carouselSlides = [
   awardsImg,
   debateImg,
   basketballImg,
-  basketball2Img,
   musicClassImg,
   chromebookImg,
   excella1Img,
@@ -47,7 +44,7 @@ const carouselSlides = [
 
 const rollingSlides = [...carouselSlides, ...carouselSlides];
 
-const partnersLogos = [academicBridgeLogo, siteCraftersLogo, satLogo, universityLogo, plpLogo];
+const partnersLogos = [academicBridgeLogo, siteCraftersLogo, satLogo, plpLogo];
 
 const educationalQuotes = [
   { q: "Education is the kindling of a flame, not the filling of a vessel.", a: "Socrates" },
@@ -130,6 +127,8 @@ export function Home() {
   const reduce = useReducedMotion();
   const heroVideoRef = useRef<HTMLVideoElement>(null);
   const tourVideoRef = useRef<HTMLVideoElement>(null);
+  const tourSeekingRef = useRef(false);
+  const tourWasPlayingBeforeSeekRef = useRef(false);
   const [tourPlaying, setTourPlaying] = useState(false);
 
   useEffect(() => {
@@ -234,14 +233,40 @@ export function Home() {
             )}
             <video
               ref={tourVideoRef}
-              controls={tourPlaying}
+              controls
               playsInline
               preload="metadata"
               poster={campus2Img}
               className="h-full w-full object-cover"
-              onPlay={() => setTourPlaying(true)}
-              onPause={() => setTourPlaying(false)}
-              onEnded={() => setTourPlaying(false)}
+              onPlay={() => {
+                tourSeekingRef.current = false;
+                tourWasPlayingBeforeSeekRef.current = false;
+                setTourPlaying(true);
+              }}
+              onSeeking={() => {
+                tourWasPlayingBeforeSeekRef.current = tourPlaying;
+                tourSeekingRef.current = true;
+              }}
+              onSeeked={() => {
+                tourSeekingRef.current = false;
+
+                if (tourWasPlayingBeforeSeekRef.current) {
+                  void tourVideoRef.current?.play().catch(() => {
+                    tourWasPlayingBeforeSeekRef.current = false;
+                    setTourPlaying(false);
+                  });
+                }
+              }}
+              onPause={() => {
+                if (!tourSeekingRef.current) {
+                  setTourPlaying(false);
+                }
+              }}
+              onEnded={() => {
+                tourSeekingRef.current = false;
+                tourWasPlayingBeforeSeekRef.current = false;
+                setTourPlaying(false);
+              }}
             >
               <source src={virtualTourVideo} type="video/mp4" />
             </video>
@@ -411,15 +436,17 @@ export function Home() {
             <div className="group relative overflow-hidden rounded-3xl aspect-16/10">
               <img src={trophiesImg} alt="Trophies and competitions" className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105" />
               <div className="absolute inset-0 bg-linear-to-t from-ink via-ink/40 to-transparent" />
-              <div className="absolute bottom-0 p-8 text-ink-foreground">
+              <div className="absolute bottom-0 p-6 text-ink-foreground">
                 <Trophy className="h-6 w-6 text-primary" />
-                <h3 className="mt-2 text-2xl md:text-3xl">Champions on every stage</h3>
-                <p className="mt-1 text-ink-foreground/80 max-w-md">Debate, science, arts, and athletics — our students compete nationally and internationally.</p>
+                <div className="mt-2 max-w-xs md:max-w-md">
+                  <h3 className="text-xl md:text-3xl leading-snug whitespace-normal">Champions on every stage</h3>
+                  <p className="mt-1 text-sm md:text-base text-ink-foreground/80 whitespace-normal">Debate, science and athletics</p>
+                </div>
               </div>
             </div>
           </Reveal>
           <Reveal className="md:col-span-2" delay={0.1}>
-            <div className="group relative overflow-hidden rounded-3xl aspect-16/10 md:aspect-auto md:h-full">
+            <div className="group relative overflow-hidden rounded-3xl lg:aspect-8/10 md:aspect-auto h-full">
               <img src={awardsImg} alt="Award ceremony" className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105" />
               <div className="absolute inset-0 bg-linear-to-t from-ink via-ink/40 to-transparent" />
               <div className="absolute bottom-0 p-6 text-ink-foreground">
@@ -428,20 +455,14 @@ export function Home() {
               </div>
             </div>
           </Reveal>
-          <Reveal className="md:col-span-2" delay={0.15}>
-            <div className="group relative overflow-hidden rounded-3xl aspect-square">
-              <img src={classroomImg} alt="Classroom" className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105" />
-              <div className="absolute inset-0 bg-linear-to-t from-ink/90 to-transparent" />
-            </div>
-          </Reveal>
-          <Reveal className="md:col-span-4" delay={0.2}>
+          <Reveal className="md:col-span-6" delay={0.15}>
             <div className="group relative overflow-hidden rounded-3xl aspect-square md:aspect-2/1">
-              <img src={basketballImg} alt="House spirit" className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105" />
+              <img src={basketballImg} alt="Basketball team spirit" className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105" />
               <div className="absolute inset-0 bg-linear-to-t from-ink via-ink/30 to-transparent" />
               <div className="absolute bottom-0 p-8 text-ink-foreground">
-                <h3 className="text-2xl">Voices that lead</h3>
-                <p className="mt-1 text-sm text-ink-foreground/80">Cheering, competing, and showing pride for every house.</p>
-                <p className="text-sm text-ink-foreground/80 mt-1">Debate, MUN, public speaking and student-led initiatives.</p>
+                <h3 className="text-2xl">Basketball spirit</h3>
+                <p className="mt-1 text-sm text-ink-foreground/80">Cheering, competing, and growing together on the court.</p>
+                <p className="text-sm text-ink-foreground/80 mt-1">Teamwork, discipline, and school pride in every game.</p>
               </div>
             </div>
           </Reveal>
@@ -596,35 +617,6 @@ export function Home() {
         </div>
       </section>
 
-      <section className="bg-secondary py-24 md:py-32">
-        <div className="container-px mx-auto max-w-7xl">
-          <Reveal>
-            <p className="text-xs uppercase tracking-[0.25em] text-primary font-semibold text-center">Voices of Excella</p>
-            <h2 className="mt-4 text-4xl md:text-5xl font-display text-balance text-center max-w-3xl mx-auto">
-              Trusted by parents. Loved by students.
-            </h2>
-          </Reveal>
-          <div className="mt-14 grid md:grid-cols-3 gap-5">
-            {[
-              { q: "Excella has given my daughter the confidence and discipline to dream bigger. The teachers truly know each child.", a: "Aline U.", r: "Parent · Primary" },
-              { q: "I love the balance — strong academics, leadership, and friendships that feel like family.", a: "Kevin N.", r: "Student · Secondary" },
-              { q: "The Montessori foundation combined with SAT prep made our decision easy. A truly future-ready school.", a: "Diane M.", r: "Parent · Secondary" },
-            ].map((t, i) => (
-              <Reveal key={i} delay={i * 0.08}>
-                <figure className="h-full rounded-3xl bg-card border border-border p-8 shadow-sm hover:shadow-elegant transition-shadow">
-                  <Quote className="h-7 w-7 text-primary" />
-                  <blockquote className="mt-5 text-lg leading-relaxed font-display text-foreground">"{t.q}"</blockquote>
-                  <figcaption className="mt-6 pt-6 border-t border-border">
-                    <p className="font-semibold">{t.a}</p>
-                    <p className="text-sm text-muted-foreground">{t.r}</p>
-                  </figcaption>
-                </figure>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* NEWS */}
       <section className="container-px mx-auto max-w-7xl pb-24">
         <div className="flex flex-wrap items-end justify-between gap-6 mb-10">
@@ -667,13 +659,13 @@ export function Home() {
           <p className="text-xs uppercase tracking-[0.25em] text-primary font-semibold text-center">Our partners</p>
           <h2 className="mt-3 text-3xl md:text-5xl font-display text-center">Trusted collaborations</h2>
         </Reveal>
-        <div className="mt-10 flex flex-nowrap items-start justify-center gap-6 md:gap-10 overflow-x-auto pb-4">
+        <div className="mt-10 grid grid-cols-2 gap-4 md:flex md:flex-nowrap md:items-start md:justify-center md:gap-10 overflow-x-auto pb-4">
           {partnersLogos.map((logo, i) => {
             const topRow = i % 2 === 0;
 
             return (
               <Reveal key={i} delay={i * 0.04}>
-                <div className={`shrink-0 rounded-2xl border border-border bg-card p-6 flex items-center justify-center hover:border-primary/40 transition-colors ${topRow ? "mt-0" : "mt-14 md:mt-20"}`}>
+                <div className={`w-full md:shrink-0 rounded-2xl border border-border bg-card p-4 md:p-6 flex items-center justify-center hover:border-primary/40 transition-colors ${topRow ? "md:mt-0" : "md:mt-20"}`}>
                   <img src={logo} alt="Partner logo" className="h-12 md:h-16 w-auto object-contain" />
                 </div>
               </Reveal>

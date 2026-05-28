@@ -32,6 +32,13 @@ export function SiteHeader() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Scroll to top when navigating to Home, or when clicking Home while already on it
+  useEffect(() => {
+    if (location.pathname === "/") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, [location.pathname]);
+
   useEffect(() => { setOpen(false); }, [location.pathname]);
 
   useEffect(() => {
@@ -90,7 +97,15 @@ export function SiteHeader() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             >
-              <Link to="/" className="flex items-center gap-3">
+              <Link
+                to="/"
+                className="flex items-center gap-3"
+                onClick={() => {
+                  if (location.pathname === "/") {
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }
+                }}
+              >
                 <img src={logo} alt="Excella School" className="h-9 md:h-10 w-auto rounded-sm" />
               </Link>
             </motion.div>
@@ -109,6 +124,11 @@ export function SiteHeader() {
                     `px-3 py-2 text-sm font-medium transition-colors relative group ${isActive ? "text-primary" : desktopLinkTone
                     }`
                   }
+                  onClick={() => {
+                    if (item.to === "/" && location.pathname === "/") {
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    }
+                  }}
                 >
                   {item.label}
                   <span className="absolute left-3 right-3 -bottom-0.5 h-px bg-primary scale-x-0 group-hover:scale-x-100 origin-left transition-transform" />
@@ -150,6 +170,13 @@ export function SiteHeader() {
                     className={({ isActive }) =>
                       `px-3 py-3 rounded-md text-sm font-medium ${isActive ? "text-primary" : mobileOpenLinkTone}`
                     }
+                    onClick={() => {
+                      // close mobile menu after click
+                      setOpen(false);
+                      if (item.to === "/" && location.pathname === "/") {
+                        window.scrollTo({ top: 0, behavior: "smooth" });
+                      }
+                    }}
                   >
                     {item.label}
                   </NavLink>
