@@ -18,8 +18,6 @@ import { Reveal } from "@/components/site/Reveal";
 import { CTASection } from "@/components/site/CTASection";
 import campusImg from "@/assets/ExcellaGallery/excella-campus.jpeg";
 
-import campus1Img from "@/assets/ExcellaGallery/excella-campus1.png";
-
 import campus2Img from "@/assets/ExcellaGallery/excella-campus2.png";
 
 import scienceImg from "@/assets/ExcellaGallery/excella-science.jpeg";
