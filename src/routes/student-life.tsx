@@ -1,23 +1,12 @@
+import { CTASection } from "@/components/site/CTASection";
 import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
-import { CTASection } from "@/components/site/CTASection";
-import { Trophy, Users, Mic, Palette, Plane, Heart } from "lucide-react";
-import trophies from "@/assets/excella-trophies.jpeg";
-import debate from "@/assets/excella-debate.jpeg";
-import awards from "@/assets/excella-awards.jpeg";
-import basketball from "@/assets/Excella-basketball.png";
-import basketball2 from "@/assets/Excella-basketball2.png";
-import musicClass from "@/assets/Excella-musicclass.png";
-import science from "@/assets/excella-science.jpeg";
-
-const pillars = [
-  { icon: Trophy, t: "Sports", d: "Football, basketball, athletics and more." },
-  { icon: Mic, t: "Debate & MUN", d: "Confident speakers, sharp thinkers." },
-  { icon: Palette, t: "Arts & Music", d: "Creative expression at every age." },
-  { icon: Users, t: "Leadership", d: "Student council, prefects, house captains." },
-  { icon: Plane, t: "School Trips", d: "Local discovery and global exposure." },
-  { icon: Heart, t: "Service", d: "Community projects with real impact." },
-];
+import { Laptop, Quote } from "lucide-react";
+import classroomImg from "@/assets/ExcellaGallery/Classroom.png";
+import debateImg from "@/assets/ExcellaGallery/excella-debate.jpeg";
+import scienceImg from "@/assets/ExcellaGallery/excella-science.jpeg";
+import chromebookImg from "@/assets/ExcellaGallery/chromebook.png";
+import mrsPeaceQuoteImg from "@/assets/mrsPeace+quote.jpeg";
 
 export function StudentLife() {
   return (
@@ -25,52 +14,179 @@ export function StudentLife() {
       <PageHero
         eyebrow="Student Life"
         title="Where character meets confidence."
-        subtitle="A vibrant community of clubs, competitions, and shared experiences — the moments that shape who our students become."
-        image={trophies}
-        variant="split"
-        meta={[
-          <span key="1" className="rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.2em]">Clubs</span>,
-          <span key="2" className="rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.2em]">Competitions</span>,
-          <span key="3" className="rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.2em]">Community</span>,
-        ]}
+        subtitle="A look at the learning experiences that shape our students beyond the classroom."
+        image={scienceImg}
       />
 
-      <section className="container-px mx-auto max-w-7xl py-24 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        {pillars.map((p, i) => (
-          <Reveal key={i} delay={i * 0.05}>
-            <div className="h-full rounded-3xl border border-border p-8 bg-card hover:border-primary/40 hover:-translate-y-1 transition-all">
-              <p.icon className="h-7 w-7 text-primary" />
-              <h3 className="mt-5 text-2xl">{p.t}</h3>
-              <p className="mt-2 text-muted-foreground">{p.d}</p>
+      {/* MODERN LEARNING EXPERIENCE (from Home) */}
+      <section className="container-px mx-auto max-w-7xl py-24 md:py-32 grid lg:grid-cols-12 gap-12 items-center">
+        <Reveal className="lg:col-span-6 order-2 lg:order-1">
+          <p className="text-xs uppercase tracking-[0.25em] text-primary font-semibold">
+            Modern learning experience
+          </p>
+          <h2 className="mt-4 text-4xl md:text-5xl font-display text-balance">
+            Technology that <em className="text-primary not-italic">supports</em> education — not
+            replaces it.
+          </h2>
+          <p className="mt-5 text-muted-foreground text-lg">
+            We recognise that children do not come to school empty-headed. They arrive with
+            knowledge from home, family, and experience — and our teachers build on that foundation
+            with care, curiosity, and encouragement.
+          </p>
+          <ul className="mt-7 space-y-3">
+            {[
+              "Teaching from the heart, not only from the book",
+              "Children learn through encouragement and praise",
+              "Academic, social, and spiritual growth",
+              "A balanced approach to assessment and progress",
+            ].map((item) => (
+              <li key={item} className="flex items-center gap-3 text-foreground/85">
+                <span className="h-1.5 w-1.5 rounded-full bg-primary" /> {item}
+              </li>
+            ))}
+          </ul>
+        </Reveal>
+        <Reveal className="lg:col-span-6 order-1 lg:order-2" delay={0.15}>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="space-y-4">
+              <img
+                src={scienceImg}
+                alt="Student in science lab"
+                className="rounded-2xl aspect-3/4 object-cover object-center w-full shadow-elegant"
+              />
+              <img
+                src={classroomImg}
+                alt="Excella classroom"
+                className="rounded-2xl aspect-square object-cover object-center w-full"
+              />
             </div>
-          </Reveal>
-        ))}
+            <div className="space-y-4 pt-10">
+              <img
+                src={debateImg}
+                alt="Student leadership"
+                className="rounded-2xl aspect-square object-cover object-top w-full"
+              />
+              <div className="relative overflow-hidden rounded-2xl aspect-3/4 bg-ink shadow-elegant">
+                <img
+                  src={chromebookImg}
+                  alt="Chromebook equipped learning"
+                  className="h-full w-full object-cover object-center"
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-ink/80 via-ink/20 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-6 text-ink-foreground">
+                  <Laptop className="h-7 w-7 text-primary" />
+                  <p className="text-sm text-ink-foreground/80 mt-1">
+                    Chromebook-equipped learning
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Reveal>
       </section>
 
-      <section className="container-px mx-auto max-w-7xl pb-24">
-        <Reveal>
-          <h2 className="text-3xl md:text-5xl font-display max-w-3xl">Stories from life beyond the classroom.</h2>
-        </Reveal>
-        <div className="mt-12 columns-1 sm:columns-2 lg:columns-3 gap-4 [column-fill:balance]">
-          {[
-            { img: basketball, t: "Basketball training", span: "aspect-[4/3]" },
-            { img: basketball2, t: "Teamwork on the court", span: "aspect-[4/3]" },
-            { img: musicClass, t: "Music class moments", span: "aspect-[4/3]" },
-            { img: science, t: "Science in action", span: "aspect-[4/3]" },
-            { img: trophies, t: "Regional debate champions", span: "aspect-[4/3]" },
-            { img: awards, t: "Celebrating excellence", span: "aspect-[4/3]" },
-            { img: debate, t: "Public speaking finals", span: "aspect-[16/9]" },
-          ].map((s, i) => (
-            <Reveal key={i} delay={i * 0.06}>
-              <figure className="mb-4 break-inside-avoid inline-block w-full">
-                <div className="group relative overflow-hidden rounded-3xl">
-                  <img src={s.img} alt={s.t} className={s.img === debate ? "w-full h-auto object-cover object-top transition-transform duration-700 group-hover:scale-105" : "w-full h-auto object-cover object-center transition-transform duration-700 group-hover:scale-105"} />
-                  <div className="absolute inset-0 bg-linear-to-t from-ink via-ink/30 to-transparent" />
-                  <p className="absolute bottom-6 left-6 right-6 text-ink-foreground text-lg font-display">{s.t}</p>
+      {/* WISDOM LAB (from Home) */}
+      <section className="container-px mx-auto max-w-7xl py-24 md:py-32">
+        <div className="grid lg:grid-cols-12 gap-12 items-center">
+          <Reveal className="lg:col-span-7">
+            <p className="text-xs uppercase tracking-[0.25em] text-primary font-semibold">
+              Wisdom Lab
+            </p>
+            <h2 className="mt-4 text-4xl md:text-5xl font-display text-balance">
+              Life lessons led by our director.
+            </h2>
+            <p className="mt-5 text-lg text-muted-foreground leading-relaxed">
+              Wisdom Lab translates our whole-child philosophy into practice. Through inspiring
+              quotes, reflection, and discussion, students learn that education is not only about
+              facts — it is about building character, confidence, discipline, and a balanced life.
+            </p>
+            <ul className="mt-6 grid grid-cols-2 gap-3">
+              {[
+                "Leadership",
+                "Balance",
+                "Responsibility",
+                "Perseverance",
+                "Integrity",
+                "Personal growth",
+              ].map((v) => (
+                <li key={v} className="flex items-center gap-3 text-foreground/85">
+                  <span className="h-2 w-2 rounded-full bg-primary" /> {v}
+                </li>
+              ))}
+            </ul>
+            <p className="mt-6 text-muted-foreground">
+              At the end of every term students sit a Life Skills exam that reflects the lessons,
+              ideas, and reflections from Wisdom Lab sessions. The aim is not to compare children
+              harshly, but to help each learner grow into a thoughtful and confident person.
+            </p>
+          </Reveal>
+          <Reveal className="lg:col-span-5" delay={0.1}>
+            <div className="group relative overflow-hidden rounded-3xl border border-border bg-card p-8 flex flex-col items-center text-center shadow-elegant">
+              <div className="relative">
+                <div
+                  aria-hidden="true"
+                  className="h-40 w-40 rounded-full bg-linear-to-br from-slate-300 to-slate-500 border border-border shadow-md"
+                />
+                <div className="absolute inset-0 flex items-end justify-center pointer-events-none">
+                  <span className="bg-black/80 text-white text-xs font-semibold px-2 py-1 rounded">
+                    Image coming soon
+                  </span>
                 </div>
-              </figure>
-            </Reveal>
-          ))}
+              </div>
+              <p className="mt-5 font-display text-xl">Mr. Theo</p>
+              <p className="text-sm text-muted-foreground">School Director</p>
+              <blockquote className="mt-4 text-sm italic text-muted-foreground">
+                “We do not just fill minds with facts. We help children grow into whole people.”
+              </blockquote>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* LIFE SKILLS AT EXCELLA (from Home) */}
+      <section className="container-px mx-auto max-w-7xl pb-24 md:pb-32">
+        <div className="grid lg:grid-cols-12 gap-12 items-start">
+          <Reveal className="lg:col-span-7">
+            <p className="text-xs uppercase tracking-[0.25em] text-primary font-semibold">
+              Life skills at Excella School
+            </p>
+            <h2 className="mt-4 text-4xl md:text-5xl font-display text-balance">
+              A glimpse of our pursuit of balanced education.
+            </h2>
+            <p className="mt-5 text-lg text-muted-foreground leading-relaxed">
+              In keeping with our vision of holistic or whole-child development, students are
+              exposed to a wide range of experiences beyond the traditional academic subjects. We
+              equip them with practical life skills so they can confidently face the world outside
+              school.
+            </p>
+            <div className="mt-8 rounded-3xl border border-border bg-card p-7">
+              <blockquote className="text-lg md:text-xl font-display leading-relaxed text-foreground">
+                “Children learn what they live.”
+              </blockquote>
+              <p className="mt-3 text-sm text-muted-foreground">Dorothy Law Nolte</p>
+            </div>
+          </Reveal>
+          <Reveal className="lg:col-span-5" delay={0.1}>
+            <div className="rounded-3xl border border-border bg-secondary p-8">
+              <h3 className="text-2xl font-display">What life skills look like at Excella</h3>
+              <ul className="mt-6 space-y-4">
+                {[
+                  "Encouraging students to live with confidence, fairness, acceptance, and friendship.",
+                  "Teaching through praise, encouragement, and positive energy instead of intimidation.",
+                  "Helping children grow socially, academically, and spiritually as part of one balanced journey.",
+                  "Showing that grades are only one part of progress, while character, care, and discipline matter too.",
+                ].map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-start gap-3 text-muted-foreground leading-relaxed"
+                  >
+                    <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-primary" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </Reveal>
         </div>
       </section>
 
@@ -78,3 +194,4 @@ export function StudentLife() {
     </>
   );
 }
+

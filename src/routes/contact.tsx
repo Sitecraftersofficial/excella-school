@@ -1,7 +1,7 @@
 import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
 import { Mail, Phone, MapPin, MessageCircle, Clock } from "lucide-react";
-import campus from "@/assets/excella-campus.jpeg";
+import campus from "@/assets/ExcellaGallery/excella-campus.jpeg";
 
 export function Contact() {
   return (
@@ -18,11 +18,25 @@ export function Contact() {
           {[
             { icon: MapPin, t: "Campus", d: "Kigali, Rwanda" },
             { icon: Phone, t: "Phone", d: "+250 788 000 000", href: "tel:+250788000000" },
-            { icon: MessageCircle, t: "WhatsApp", d: "Message admissions", href: "https://wa.me/250788000000" },
-            { icon: Mail, t: "Email", d: "admissions@excella.school", href: "mailto:admissions@excella.school" },
+            {
+              icon: MessageCircle,
+              t: "WhatsApp",
+              d: "Message admissions",
+              href: "https://wa.me/250788000000",
+            },
+            {
+              icon: Mail,
+              t: "Email",
+              d: "admissions@excella.school",
+              href: "mailto:admissions@excella.school",
+            },
             { icon: Clock, t: "School hours", d: "Mon–Fri · 7:30 – 16:30" },
           ].map((c, i) => (
-            <a key={i} href={c.href ?? "#"} className="flex items-start gap-4 rounded-2xl border border-border bg-card p-6 hover:border-primary/40 hover:-translate-y-0.5 transition-all">
+            <a
+              key={i}
+              href={c.href ?? "#"}
+              className="flex items-start gap-4 rounded-2xl border border-border bg-card p-6 hover:border-primary/40 hover:-translate-y-0.5 transition-all"
+            >
               <div className="h-11 w-11 rounded-xl bg-primary/10 text-primary grid place-items-center shrink-0">
                 <c.icon className="h-5 w-5" />
               </div>
@@ -37,14 +51,36 @@ export function Contact() {
         <Reveal className="lg:col-span-7" delay={0.1}>
           <div className="rounded-3xl border border-border bg-card p-8 md:p-10">
             <h3 className="text-2xl md:text-3xl font-display">Send us a message</h3>
-            <form className="mt-8 grid sm:grid-cols-2 gap-4" onSubmit={(e) => { e.preventDefault(); alert("Message received — thank you."); }}>
+            <p className="mt-2 text-muted-foreground text-sm">Choose your preferred way to connect with us.</p>
+            <form
+              className="mt-8 grid sm:grid-cols-2 gap-4"
+              onSubmit={(e) => {
+                e.preventDefault();
+                alert("Message received — thank you.");
+              }}
+            >
               <input className="input" placeholder="Your name" required />
               <input type="email" className="input" placeholder="Email" required />
               <input className="input sm:col-span-2" placeholder="Subject" />
-              <textarea rows={5} className="input sm:col-span-2" placeholder="Your message" required />
-              <button className="sm:col-span-2 inline-flex items-center justify-center rounded-full bg-primary text-primary-foreground px-6 py-3.5 font-semibold hover:opacity-90 w-fit">
-                Send message
-              </button>
+              <textarea
+                rows={5}
+                className="input sm:col-span-2"
+                placeholder="Your message"
+                required
+              />
+              <div className="sm:col-span-2 flex flex-wrap gap-3">
+                <button className="inline-flex items-center justify-center rounded-full bg-primary text-primary-foreground px-6 py-3.5 font-semibold hover:opacity-90 transition">
+                  Send via Email
+                </button>
+                <a
+                  href="https://wa.me/250788000000?text=Hi%20Excella!%20I'd%20like%20to%20inquire%20about%20your%20programs."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3.5 font-semibold hover:bg-accent transition"
+                >
+                  <MessageCircle className="h-4 w-4" /> Send via WhatsApp
+                </a>
+              </div>
             </form>
           </div>
         </Reveal>

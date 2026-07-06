@@ -2,15 +2,15 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import logo from "@/assets/Excella+Am-logo.jpeg";
+import logo from "@/assets/ExcellaLogo/Excella+Ams-logo.jpeg";
 
 const nav = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About" },
-  { to: "/academics", label: "Academics" },
+  { to: "/programs", label: "Programs" },
+  { to: "/leadership", label: "Leadership" },
   { to: "/admissions", label: "Admissions" },
   { to: "/student-life", label: "Student Life" },
-  { to: "/news", label: "News & Events" },
   { to: "/gallery", label: "Gallery" },
   { to: "/contact", label: "Contact" },
 ] as const;
@@ -21,8 +21,12 @@ export function SiteHeader() {
   const [showMainHeader, setShowMainHeader] = useState(false);
   const reduceMotion = useReducedMotion();
   const location = useLocation();
-  const desktopLinkTone = scrolled ? "text-foreground/80 hover:text-foreground" : "text-white/90 hover:text-white";
-  const mobileLinkTone = scrolled ? "text-foreground/80 hover:bg-accent" : "text-ink-foreground/90 hover:bg-white/10";
+  const desktopLinkTone = scrolled
+    ? "text-foreground/80 hover:text-foreground"
+    : "text-white/90 hover:text-white";
+  const mobileLinkTone = scrolled
+    ? "text-foreground/80 hover:bg-accent"
+    : "text-ink-foreground/90 hover:bg-white/10";
   const mobileOpenLinkTone = "text-white/95 hover:bg-white/10";
 
   useEffect(() => {
@@ -39,7 +43,9 @@ export function SiteHeader() {
     }
   }, [location.pathname]);
 
-  useEffect(() => { setOpen(false); }, [location.pathname]);
+  useEffect(() => {
+    setOpen(false);
+  }, [location.pathname]);
 
   useEffect(() => {
     if (open) {
@@ -76,7 +82,11 @@ export function SiteHeader() {
             />
             <div className="absolute inset-0 bg-linear-to-r from-ink/85 via-ink/55 to-ink/85" />
             <div className="relative z-10 flex h-full w-full items-center justify-center">
-              <img src={logo} alt="Excella School" className="h-12 md:h-14 w-auto rounded-sm shadow-elegant" />
+              <img
+                src={logo}
+                alt="Excella School"
+                className="h-12 md:h-14 w-auto rounded-sm shadow-elegant"
+              />
             </div>
           </motion.div>
         )}
@@ -84,7 +94,9 @@ export function SiteHeader() {
 
       {showMainHeader && (
         <motion.header
-          className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${scrolled ? "glass border-b border-border/60" : "bg-transparent border-b-2 border-primary/80"
+          className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${scrolled
+              ? "glass border-b border-border/60"
+              : "bg-transparent border-b-2 border-primary/80"
             }`}
           initial={reduceMotion ? false : { opacity: 0, y: -24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -135,19 +147,6 @@ export function SiteHeader() {
                 </NavLink>
               ))}
             </motion.nav>
-            <motion.div
-              className="hidden lg:flex items-center gap-3"
-              initial={reduceMotion ? false : { opacity: 0, y: -8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.24, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <Link
-                to="/admissions"
-                className="inline-flex items-center justify-center rounded-full bg-ink text-ink-foreground px-5 py-2.5 text-sm font-semibold hover:opacity-90 transition-opacity"
-              >
-                Apply Now
-              </Link>
-            </motion.div>
             <motion.button
               aria-label={open ? "Close menu" : "Open menu"}
               className={`lg:hidden inline-flex items-center justify-center h-10 w-10 rounded-full border ${scrolled ? "border-border" : "border-white/40 text-white"}`}
@@ -181,12 +180,6 @@ export function SiteHeader() {
                     {item.label}
                   </NavLink>
                 ))}
-                <Link
-                  to="/admissions"
-                  className="mt-2 inline-flex items-center justify-center rounded-full bg-white text-ink px-5 py-3 text-sm font-semibold"
-                >
-                  Apply Now
-                </Link>
               </nav>
             </div>
           )}

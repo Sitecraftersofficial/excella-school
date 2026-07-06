@@ -1,7 +1,6 @@
-import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import { Reveal } from "./Reveal";
-import logo from "@/assets/Excella-logo.png";
+import logo from "@/assets/ExcellaLogo/Excella-logo.png";
 
 export function CTASection() {
   return (
@@ -16,7 +15,9 @@ export function CTASection() {
                 <img src={logo} alt="Excella School" className="h-12 w-12 object-contain" />
               </div>
               <div>
-                <p className="text-xs uppercase tracking-[0.25em] text-primary font-semibold">Admissions Open</p>
+                <p className="text-xs uppercase tracking-[0.25em] text-primary font-semibold">
+                  Admissions Open
+                </p>
                 <p className="mt-1 text-sm text-ink-foreground/70">Excella School</p>
               </div>
             </div>
@@ -28,17 +29,28 @@ export function CTASection() {
           </Reveal>
           <Reveal delay={0.2}>
             <p className="mt-5 text-ink-foreground/70 text-lg max-w-2xl">
-              Join a community where excellence meets opportunity. Schedule a tour or begin your application today.
+              Join a community where excellence meets opportunity. Message us on WhatsApp to start
+              your admissions journey or schedule a campus visit.
             </p>
           </Reveal>
           <Reveal delay={0.3}>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link to="/admissions" className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-6 py-3.5 font-semibold hover:opacity-90 transition">
-                Apply Today <ArrowRight className="h-4 w-4" />
-              </Link>
-              <Link to="/contact" className="inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3.5 font-semibold hover:bg-white/5 transition">
-                Book a Tour
-              </Link>
+              <a
+                href="https://wa.me/250788000000?text=Hi%20Excella!%20I'm%20interested%20in%20admissions.%20Can%20you%20help%20me?"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-6 py-3.5 font-semibold hover:opacity-90 transition shadow-glow"
+              >
+                <MessageCircle className="h-4 w-4" /> Inquire on WhatsApp
+              </a>
+              <a
+                href="https://wa.me/250788000000?text=Hi%20Excella!%20I'd%20like%20to%20schedule%20a%20campus%20visit."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3.5 font-semibold hover:bg-white/5 transition"
+              >
+                <MessageCircle className="h-4 w-4" /> Schedule a Visit
+              </a>
             </div>
           </Reveal>
         </div>

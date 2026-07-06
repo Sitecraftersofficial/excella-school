@@ -1,5 +1,4 @@
-@import "tailwindcss" source(none);
-@source "../src";
+@import "tailwindcss";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
@@ -118,6 +117,7 @@
       transform: translateX(0);
     }
     to {
+      /* Move by exactly one set width (track contains two identical sets) */
       transform: translateX(-50%);
     }
   }
@@ -127,8 +127,26 @@
     will-change: transform;
   }
 
+  /* Faster, seamless partner logo carousel */
+  .excella-logo-marquee {
+    display: flex;
+    width: max-content;
+    animation: excella-marquee 12s linear infinite;
+    will-change: transform;
+  }
+
+  .excella-logo-marquee-set {
+    display: flex;
+    align-items: center;
+    /* no gap */
+    gap: 0;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .marquee-track {
+      animation: none;
+    }
+    .excella-logo-marquee {
       animation: none;
     }
   }
