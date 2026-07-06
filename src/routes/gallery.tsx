@@ -12,7 +12,7 @@ import excellaLogo from "@/assets/ExcellaLogo/Excella+Ams-logo.jpeg";
 
 
 
-import campus1 from "@/assets/ExcellaGallery/excella-campus1.png";
+import campus1 from "@/assets/ExcellaGallery/Excella-campus1.png";
 import campus2 from "@/assets/ExcellaGallery/Excella-campus2.png";
 
 import science from "@/assets/ExcellaGallery/excella-science.jpeg";
