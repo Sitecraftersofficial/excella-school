@@ -16,10 +16,10 @@ import {
 } from "lucide-react";
 import { Reveal } from "@/components/site/Reveal";
 import { CTASection } from "@/components/site/CTASection";
+
 import campusImg from "@/assets/ExcellaGallery/excella-campus.jpeg";
-
-import campus2Img from "@/assets/ExcellaGallery/excella-campus2.png";
-
+import campus1Img from "@/assets/ExcellaGallery/Excella-campus1.png";
+import campus2Img from "@/assets/ExcellaGallery/Excella-campus2.png";
 import scienceImg from "@/assets/ExcellaGallery/excella-science.jpeg";
 import classroomImg from "@/assets/ExcellaGallery/Classroom.png";
 import trophiesImg from "@/assets/ExcellaGallery/excella-trophies.jpeg";
@@ -30,12 +30,10 @@ import musicClassImg from "@/assets/ExcellaGallery/Excella-musicclass.png";
 import chromebookImg from "@/assets/ExcellaGallery/chromebook.png";
 import excella1Img from "@/assets/ExcellaGallery/Excella-campus1.png";
 
-
 import heroBgVideo from "@/assets/Excella-BgHeroVid.mp4";
 import virtualTourVideo from "@/assets/Excella-Virtualtour.mp4";
 
 import mrsPeaceQuoteImg from "@/assets/mrsPeace+quote.jpeg";
-
 
 const carouselSlides = [
   campusImg,
@@ -87,16 +85,10 @@ const educationalQuotes = [
   },
 ];
 
-// Counter removed (was unused for current home sections)
-
-
 function HomeCarousel() {
-  // Manual carousel: show 3 images, but next/prev moves by 1
   const [startIndex, setStartIndex] = useState(0);
   const images = carouselSlides;
   const visibleCount = 3;
-
-  const maxStart = Math.max(0, images.length - 1);
 
   const prev = () => setStartIndex((i) => (i - 1 + images.length) % images.length);
   const next = () => setStartIndex((i) => (i + 1) % images.length);
@@ -138,11 +130,9 @@ function HomeCarousel() {
           })}
         </div>
       </div>
-
     </section>
   );
 }
-
 
 export function Home() {
   const reduce = useReducedMotion();
@@ -187,6 +177,7 @@ export function Home() {
           <div className="absolute inset-0 bg-linear-to-t from-ink via-ink/70 to-ink/30" />
           <div className="absolute inset-0 gradient-radial opacity-60" />
         </div>
+
         <div className="relative container-px mx-auto max-w-7xl pb-20 pt-40 md:pb-28 md:pt-44 w-full">
           <motion.div
             initial={reduce ? false : { opacity: 0, y: 30 }}
@@ -447,8 +438,6 @@ export function Home() {
         </div>
       </section>
 
-
-
       {/* DEPUTY DIRECTOR */}
       <section className="container-px mx-auto max-w-7xl pb-24">
         <Reveal>
@@ -482,4 +471,3 @@ export function Home() {
   );
 }
 
-// Wisdom Lab: special life-skills lecture section (director-led)
