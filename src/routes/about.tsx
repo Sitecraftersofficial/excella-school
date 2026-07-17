@@ -1,11 +1,8 @@
 import { CTASection } from "@/components/site/CTASection";
 import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
-import { Target, Eye, Heart, Award, Users, BookOpen, Sparkles, Quote, Brain } from "lucide-react";
-import awards from "@/assets/ExcellaGallery/excella-awards.jpeg";
-import classroom from "@/assets/ExcellaGallery/Classroom.png";
+import { Target, Eye, Heart, BookOpen, Sparkles, Brain } from "lucide-react";
 import campus2 from "@/assets/ExcellaGallery/Excella-campus2.png";
-import scienceImg from "@/assets/ExcellaGallery/excella-science.jpeg";
 
 export function About() {
   return (
