@@ -55,7 +55,7 @@ export function About() {
             Our Educational Philosophy
           </p>
           <h2 className="mt-4 text-4xl md:text-5xl font-display text-balance text-center max-w-4xl mx-auto">
-            The Hook: Our Foundation
+            Our Foundation
           </h2>
           <p className="mt-6 text-lg text-muted-foreground leading-relaxed text-center max-w-3xl mx-auto">
             At Excella School, we believe education extends far beyond traditional classrooms. Our
