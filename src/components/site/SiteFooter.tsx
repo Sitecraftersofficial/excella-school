@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, Instagram, Facebook, Youtube } from "lucide-react";
 import logo from "@/assets/ExcellaLogo/Excella+Ams-logo.jpeg";
+import sitecraftersLogo from "@/assets/ExcellaPartnersLogo/SitecraftersLogoSideName1.png";
 
 export function SiteFooter() {
   return (
@@ -69,23 +70,26 @@ export function SiteFooter() {
             </li>
           </ul>
         </div>
+        <div className="flex flex-col items-center justify-start text-center">
+          <img src={sitecraftersLogo} alt="SiteCrafters" className="h-16 w-auto" />
+          <p className="mt-3 text-sm text-ink-foreground/70">
+            Designed &amp; developed by the{" "}
+            <a
+              href="https://www.sitecraftersltd.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-primary transition-colors"
+            >
+              Sitecrafters Ltd Team
+            </a>
+          </p>
+        </div>
       </div>
       <div className="border-t border-white/10">
         <div className="container-px mx-auto max-w-7xl py-6 flex flex-col md:flex-row gap-3 items-center justify-between text-xs text-ink-foreground/55">
           <p>
             © {new Date().getFullYear()} Excella School. Member of the American Montessori Society.
             All rights reserved.
-          </p>
-          <p>
-            Made in Rwanda by the {" "}
-            <a
-              href="https://www.sitecraftersltd.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline underline-offset-4 text-ink-foreground/70 hover:text-primary"
-            >
-              Sitecrafters Ltd Team
-            </a>
           </p>
         </div>
       </div>
