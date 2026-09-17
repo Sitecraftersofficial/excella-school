@@ -31,7 +31,7 @@ import basketballImg from "@/assets/ExcellaGallery/OutdoorClassActivity2.png";
 import musicClassImg from "@/assets/ExcellaGallery/Trip.png";
 import chromebookImg from "@/assets/ExcellaGallery/Excella-Bus.png";
 
-import mrsPeaceQuoteImg from "@/assets/mrsPeace+quote.jpeg";
+import mrsPeaceQuoteImg from "@/assets/ExcellaTeam/MrsPeaceUwineza.jpg";
 
 const heroSlides = [
   { img: campusImg, quote: "Where every child's journey begins with a smile." },
@@ -331,7 +331,7 @@ export function Home() {
             <img
               src={mrsPeaceQuoteImg}
               alt="Mrs. Peace Uwineza, Deputy Director"
-              className="rounded-2xl w-full md:w-2/5 h-auto object-cover object-center shadow-elegant"
+              className="h-72 w-full shrink-0 rounded-2xl object-cover object-top shadow-elegant md:h-96 md:w-2/5"
             />
             <div className="md:flex-1">
               <p className="text-xs uppercase tracking-[0.25em] text-primary font-semibold">
