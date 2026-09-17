@@ -4,13 +4,12 @@ import { useMemo, useState } from "react";
 import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
 import { CTASection } from "@/components/site/CTASection";
+import { Lightbox } from "@/components/site/Lightbox";
+import { Maximize2 } from "lucide-react";
 
 import campus from "@/assets/ExcellaGallery/excella-campus.jpeg";
 
 import excellaLogo from "@/assets/ExcellaLogo/Excella+Ams-logo.jpeg";
-
-
-
 
 import campus1 from "@/assets/ExcellaGallery/Excella-campus1.png";
 import campus2 from "@/assets/ExcellaGallery/Excella-campus2.png";
@@ -86,8 +85,8 @@ export function Gallery() {
     [],
   );
 
-  // Optional: keep focus management for hover cards by cycling a simple "selected" index.
-  const [selectedIndex, setSelectedIndex] = useState<number>(0);
+  // Index of the image currently open in the custom lightbox viewer.
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   return (
     <>
@@ -115,10 +114,7 @@ export function Gallery() {
             <div className="excella-logo-marquee">
               {/* Duplicate set for seamless loop */}
               {[0, 1].map((setIndex) => (
-                <div
-                  key={setIndex}
-                  className="flex items-center gap-0 excella-logo-marquee-set"
-                >
+                <div key={setIndex} className="flex items-center gap-0 excella-logo-marquee-set">
                   {Array.from({ length: 8 }).map((_, i) => (
                     <div
                       key={`${setIndex}-${i}`}
@@ -138,31 +134,45 @@ export function Gallery() {
           </div>
         </section>
 
-
-
-
         {/* Image grid */}
         <section className="container-px mx-auto max-w-7xl py-24">
           <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 [column-fill:balance]">
             {images.map((it, i) => (
               <Reveal key={i} delay={(i % 3) * 0.06}>
-                <figure className="mb-4 break-inside-avoid group relative overflow-hidden rounded-2xl">
+                <button
+                  type="button"
+                  onClick={() => setLightboxIndex(i)}
+                  aria-label={`View ${it.caption ?? "image"} in full screen`}
+                  className="mb-4 break-inside-avoid group relative block w-full overflow-hidden rounded-2xl cursor-zoom-in"
+                >
                   <img
                     src={it.src}
                     alt={it.caption}
-                    className={
-                      "w-full h-auto object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                    }
-                    onMouseEnter={() => setSelectedIndex(i)}
+                    loading="lazy"
+                    className="w-full h-auto object-cover object-center transition-transform duration-700 group-hover:scale-105"
                   />
+                  <span className="absolute inset-0 flex items-end bg-linear-to-t from-ink/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span className="flex w-full items-center justify-between px-4 pb-3 text-white">
+                      <span className="text-sm font-medium">{it.caption}</span>
+                      <span className="h-9 w-9 grid place-items-center rounded-full bg-white/15 backdrop-blur-sm">
+                        <Maximize2 className="h-4 w-4" />
+                      </span>
+                    </span>
+                  </span>
                   <figcaption className="hidden">{it.caption}</figcaption>
-                </figure>
+                </button>
               </Reveal>
             ))}
           </div>
         </section>
       </div>
 
+      <Lightbox
+        images={images}
+        index={lightboxIndex}
+        onClose={() => setLightboxIndex(null)}
+        onNavigate={setLightboxIndex}
+      />
 
       <CTASection />
     </>

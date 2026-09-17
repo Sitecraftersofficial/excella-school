@@ -40,28 +40,28 @@
 
 :root {
   --radius: 0.75rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.18 0.01 50);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.18 0.01 50);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.18 0.01 50);
-  /* Excella orange */
-  --primary: oklch(0.68 0.19 45);
+  --background: oklch(0.96 0.02 262);
+  --foreground: oklch(0.22 0.06 262);
+  --card: oklch(0.99 0.008 262);
+  --card-foreground: oklch(0.22 0.06 262);
+  --popover: oklch(0.99 0.008 262);
+  --popover-foreground: oklch(0.22 0.06 262);
+  /* Excella dark blue */
+  --primary: oklch(0.42 0.13 262);
   --primary-foreground: oklch(0.99 0 0);
   --secondary: oklch(0.97 0.005 50);
   --secondary-foreground: oklch(0.18 0.01 50);
-  --muted: oklch(0.96 0.005 50);
-  --muted-foreground: oklch(0.5 0.015 50);
-  --accent: oklch(0.95 0.03 50);
-  --accent-foreground: oklch(0.18 0.01 50);
+  --muted: oklch(0.93 0.02 262);
+  --muted-foreground: oklch(0.45 0.05 262);
+  --accent: oklch(0.9 0.04 262);
+  --accent-foreground: oklch(0.22 0.06 262);
   --destructive: oklch(0.6 0.22 27);
   --destructive-foreground: oklch(0.99 0 0);
-  --border: oklch(0.92 0.008 50);
-  --input: oklch(0.92 0.008 50);
-  --ring: oklch(0.68 0.19 45);
-  /* Deep premium ink black */
-  --ink: oklch(0.16 0.012 50);
+  --border: oklch(0.88 0.03 262);
+  --input: oklch(0.88 0.03 262);
+  --ring: oklch(0.42 0.13 262);
+  /* Deep premium ink (dark blue) */
+  --ink: oklch(0.24 0.07 262);
   --ink-foreground: oklch(0.98 0.005 50);
   --gold: oklch(0.78 0.12 75);
 }
@@ -73,8 +73,8 @@
   --card-foreground: oklch(0.98 0.005 50);
   --popover: oklch(0.18 0.012 50);
   --popover-foreground: oklch(0.98 0.005 50);
-  --primary: oklch(0.72 0.19 45);
-  --primary-foreground: oklch(0.14 0.01 50);
+  --primary: oklch(0.6 0.14 262);
+  --primary-foreground: oklch(0.98 0.005 50);
   --secondary: oklch(0.22 0.012 50);
   --secondary-foreground: oklch(0.98 0.005 50);
   --muted: oklch(0.22 0.012 50);
@@ -83,8 +83,8 @@
   --accent-foreground: oklch(0.98 0.005 50);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.72 0.19 45);
-  --ink: oklch(0.1 0.01 50);
+  --ring: oklch(0.42 0.13 262);
+  --ink: oklch(0.18 0.06 262);
   --ink-foreground: oklch(0.98 0.005 50);
 }
 

@@ -6,7 +6,8 @@ import logo from "@/assets/ExcellaLogo/Excella+Ams-logo.jpeg";
 
 const nav = [
   { to: "/", label: "Home" },
-  { to: "/about", label: "About" },
+  { to: "/about", label: "About Excella" },
+  { to: "/virtual-life-visit", label: "Virtual Life Visit", highlight: true },
   { to: "/programs", label: "Programs" },
   { to: "/leadership", label: "Leadership" },
   { to: "/admissions", label: "Admissions" },
@@ -133,7 +134,11 @@ export function SiteHeader() {
                   to={item.to}
                   end={item.to === "/"}
                   className={({ isActive }) =>
-                    `px-3 py-2 text-sm font-medium transition-colors relative group ${isActive ? "text-primary" : desktopLinkTone
+                    `px-3 py-2 text-sm font-medium transition-colors relative group rounded-full ${"highlight" in item && item.highlight
+                      ? "bg-primary text-primary-foreground font-semibold shadow-glow"
+                      : isActive
+                        ? "text-primary"
+                        : desktopLinkTone
                     }`
                   }
                   onClick={() => {
@@ -167,7 +172,12 @@ export function SiteHeader() {
                     to={item.to}
                     end={item.to === "/"}
                     className={({ isActive }) =>
-                      `px-3 py-3 rounded-md text-sm font-medium ${isActive ? "text-primary" : mobileOpenLinkTone}`
+                      `px-3 py-3 rounded-md text-sm font-medium ${"highlight" in item && item.highlight
+                        ? "bg-primary text-primary-foreground font-semibold"
+                        : isActive
+                          ? "text-primary"
+                          : mobileOpenLinkTone
+                      }`
                     }
                     onClick={() => {
                       // close mobile menu after click

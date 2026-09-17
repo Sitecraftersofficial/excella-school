@@ -77,14 +77,14 @@ export function SiteFooter() {
             All rights reserved.
           </p>
           <p>
-            Made in Rwanda by{" "}
+            Made in Rwanda by the {" "}
             <a
-              href="https://www.sitecraftersz.co/"
+              href="https://www.sitecraftersltd.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="underline underline-offset-4 text-foreground hover:text-primary"
+              className="underline underline-offset-4 text-ink-foreground/70 hover:text-primary"
             >
-              Sitecrafters Team
+              Sitecrafters Ltd Team
             </a>
           </p>
         </div>

@@ -51,11 +51,8 @@ export function About() {
       {/* EDUCATIONAL PHILOSOPHY */}
       <section className="container-px mx-auto max-w-7xl py-16">
         <Reveal>
-          <p className="text-xs uppercase tracking-[0.25em] text-primary font-semibold text-center">
-            Our Educational Philosophy
-          </p>
-          <h2 className="mt-4 text-4xl md:text-5xl font-display text-balance text-center max-w-4xl mx-auto">
-            Our Foundation
+          <h2 className="text-4xl md:text-5xl font-display text-balance text-center max-w-4xl mx-auto">
+            Our Philosophy
           </h2>
           <p className="mt-6 text-lg text-muted-foreground leading-relaxed text-center max-w-3xl mx-auto">
             At Excella School, we believe education extends far beyond traditional classrooms. Our
@@ -135,11 +132,8 @@ export function About() {
         <div className="absolute inset-0 gradient-radial opacity-50" />
         <div className="relative container-px mx-auto max-w-7xl">
           <Reveal>
-            <p className="text-xs uppercase tracking-[0.25em] text-primary font-semibold text-center">
-              Our Educational Vision
-            </p>
-            <h2 className="mt-4 text-4xl md:text-5xl font-display text-balance text-center max-w-4xl mx-auto">
-              Scanning the Future
+            <h2 className="text-4xl md:text-5xl font-display text-balance text-center max-w-4xl mx-auto">
+              Our Vision
             </h2>
             <p className="mt-6 text-lg text-ink-foreground/80 leading-relaxed text-center max-w-3xl mx-auto">
               We look past the classroom walls and ask: What kind of human beings will our students
@@ -200,12 +194,10 @@ export function About() {
       <section className="container-px mx-auto max-w-7xl py-16">
         <Reveal>
           <div className="text-center max-w-3xl mx-auto">
-            <p className="text-xs uppercase tracking-[0.25em] text-primary font-semibold">
-              Our Educational Mission
-            </p>
-            <h2 className="mt-4 text-4xl md:text-5xl font-display text-balance">
+            <h2 className="text-4xl md:text-5xl font-display text-balance">Our Mission</h2>
+            <p className="mt-3 text-sm uppercase tracking-[0.25em] text-primary font-semibold">
               In Pursuit of Balanced Education
-            </h2>
+            </p>
             <div className="mt-6 p-6 bg-primary/5 rounded-2xl border border-primary/20">
               <p className="text-lg font-display leading-relaxed italic">
                 "To stimulate life, leaving it free to unfold itself is the first duty of the
@@ -300,11 +292,8 @@ export function About() {
       <section className="container-px mx-auto max-w-7xl py-16">
         <Reveal>
           <div className="text-center max-w-3xl mx-auto">
-            <p className="text-xs uppercase tracking-[0.25em] text-primary font-semibold">
-              Teaching & Learning Methodologies
-            </p>
-            <h2 className="mt-4 text-4xl md:text-5xl font-display text-balance">
-              Learning by Doing
+            <h2 className="text-4xl md:text-5xl font-display text-balance">
+              Our Teaching Methodologies
             </h2>
             <div className="mt-4 p-5 bg-primary/5 rounded-2xl border border-primary/20">
               <p className="text-lg font-display leading-relaxed italic">
@@ -361,11 +350,8 @@ export function About() {
         <div className="relative container-px mx-auto max-w-7xl">
           <Reveal>
             <div className="text-center max-w-3xl mx-auto">
-              <p className="text-xs uppercase tracking-[0.25em] text-primary font-semibold">
-                Lifeskills, Active Engagement, & Character Nourishment
-              </p>
-              <h2 className="mt-4 text-4xl md:text-5xl font-display text-balance">
-                Learning by Doing
+              <h2 className="text-4xl md:text-5xl font-display text-balance">
+                Our Lifeskills & Character
               </h2>
               <div className="mt-4 p-5 bg-white/5 rounded-2xl border border-white/10">
                 <p className="text-lg font-display leading-relaxed italic">
@@ -483,11 +469,8 @@ export function About() {
       <section className="container-px mx-auto max-w-7xl py-16">
         <Reveal>
           <div className="text-center max-w-3xl mx-auto">
-            <p className="text-xs uppercase tracking-[0.25em] text-primary font-semibold">
-              Educational Assessment & Evaluation
-            </p>
-            <h2 className="mt-4 text-4xl md:text-5xl font-display text-balance">
-              Measuring What Matters
+            <h2 className="text-4xl md:text-5xl font-display text-balance">
+              Our Assessment & Evaluation
             </h2>
             <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
               We measure growth intentionally to ensure every milestone is realized, using robust

@@ -13,6 +13,7 @@ import { Home } from "@/routes/index";
 import { Leadership } from "@/routes/leadership";
 import { Programs } from "@/routes/programs";
 import { StudentLife } from "@/routes/student-life";
+import { VirtualLifeVisit } from "@/routes/virtual-life-visit";
 
 function ScrollToTop() {
   const location = useLocation();
@@ -129,6 +130,7 @@ export default function App() {
             <Route path="/admissions" element={<Admissions />} />
 
             <Route path="/student-life" element={<StudentLife />} />
+            <Route path="/virtual-life-visit" element={<VirtualLifeVisit />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<Navigate to="/" replace />} />
